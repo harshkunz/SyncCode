@@ -1,0 +1,11 @@
+packages:
+  - apps/*
+  - packages/*
+
+onlyBuiltDependencies:
+  - '@sentry/cli'
+  - bufferutil
+  - es5-ext
+  - sharp
+  - unrs-resolver
+  - utf-8-validate

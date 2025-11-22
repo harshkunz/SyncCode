@@ -1,0 +1,53 @@
+{
+  "name": "codex",
+  "private": true,
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "build:client": "turbo build --filter=client...",
+    "build:server": "turbo build --filter=server...",
+    "lint": "turbo lint",
+    "lint:fix": "turbo lint:fix",
+    "format": "prettier --check **/*.{js,mjs,jsx,ts,tsx,json}",
+    "format:fix": "prettier --write **/*.{js,mjs,jsx,ts,tsx,json}",
+    "test:client": "turbo test:e2e",
+    "test:client:ui": "turbo test:e2e:ui",
+    "test:client:debug": "turbo test:e2e:debug",
+    "test:client:report": "turbo test:e2e:report",
+    "test:server": "turbo test:socket",
+    "test:server:remote": "turbo test:socket:remote",
+    "test:server:watch": "turbo test:watch",
+    "clean": "node scripts/clean.js",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "**/*.{js,mjs,jsx,ts,tsx,json}": [
+      "pnpm format:fix"
+    ],
+    "apps/client/**/*.{js,mjs,jsx,ts,tsx,json}": [
+      "pnpm --filter=client lint:fix"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@ianvs/prettier-plugin-sort-imports": "^4.7.0",
+    "@prettier/plugin-oxc": "^0.0.4",
+    "@types/simple-peer": "^9.11.9",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.2",
+    "prettier": "^3.6.2",
+    "prettier-plugin-classnames": "^0.7.9",
+    "prettier-plugin-ember-template-tag": "^2.1.0",
+    "prettier-plugin-merge": "^0.7.4",
+    "prettier-plugin-tailwindcss": "^0.6.14",
+    "rimraf": "^6.1.0",
+    "turbo": "^2.6.0",
+    "typescript": "^5.9.3"
+  },
+  "optionalDependencies": {
+    "bufferutil": "^4.0.9",
+    "utf-8-validate": "^6.0.5"
+  },
+  "packageManager": "pnpm@10.20.0+sha512.cf9998222162dd85864d0a8102e7892e7ba4ceadebbf5a31f9c2fce48dfce317a9c53b9f6464d1ef9042cba2e02ae02a9f7c143a2b438cd93c91840f0192b9dd"
+}
