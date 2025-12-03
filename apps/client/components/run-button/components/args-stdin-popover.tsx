@@ -91,7 +91,7 @@ const ArgsInputPopover = ({ onArgsChange, onStdinChange, disabled }: ExecutionAr
         </TooltipContent>
       </Tooltip>
 
-      <PopoverContent className="w-80 p-4" sideOffset={8}>
+      <PopoverContent className="w-80 p-3" sideOffset={8}>
         <div className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="args-input">Program Arguments</Label>
@@ -144,8 +144,8 @@ const ArgsInputPopover = ({ onArgsChange, onStdinChange, disabled }: ExecutionAr
           <div className="text-muted-foreground text-xs">
             <p className="font-medium">Example:</p>
             <ul className="font-mono">
-              <li>input1</li>
-              <li>42 Bangkok</li>
+              <li>input 1</li>
+              <li>42 Sun</li>
               <li>1 2 3</li>
             </ul>
           </div>

@@ -48,7 +48,7 @@ const AboutPopover = () => (
                 href=""
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-foreground hover:text-muted-foreground font-medium underline underline-offset-4 !transition-all"
+                className="text-foreground hover:text-muted-foreground underline underline-offset-4 !transition-all"
               >
                 manual
               </a>
