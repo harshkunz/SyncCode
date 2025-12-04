@@ -14,7 +14,7 @@ import type { Metadata, Viewport } from 'next';
 import { GeistMono } from 'geist/font/mono';
 import { GeistSans } from 'geist/font/sans';
 
-import { BASE_CLIENT_URL, NAME, PORTFOLIO_URL, SITE_DESCRIPTION, SITE_NAME } from '@/lib/constants';
+import { NAME, PORTFOLIO_URL, SITE_DESCRIPTION, SITE_NAME } from '@/lib/constants';
 import { Toaster } from '@/components/ui/sonner';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { Analytics } from '@/components/analytics';
@@ -23,6 +23,8 @@ import { ThemeProvider } from '@/components/theme-provider';
 import './globals.css';
 
 // export const runtime = 'edge';
+
+const DEFAULT_URL = process.env.NEXT_PUBLIC_CLIENT_URL || 'https://synccode.vercel.app';
 
 export const metadata: Metadata = {
   title: {
@@ -40,7 +42,7 @@ export const metadata: Metadata = {
     name: NAME,
     url: PORTFOLIO_URL
   },
-  metadataBase: new URL(BASE_CLIENT_URL),
+  metadataBase: new URL(DEFAULT_URL),
   formatDetection: {
     telephone: false
   },
@@ -52,14 +54,14 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: SITE_NAME,
     locale: 'en_US',
-    url: BASE_CLIENT_URL
+    url: DEFAULT_URL
   },
   twitter: {
     card: 'summary_large_image',
     creator: '@dulapahv'
   },
   alternates: {
-    canonical: BASE_CLIENT_URL
+    canonical: DEFAULT_URL
   }
 };
 
