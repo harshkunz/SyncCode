@@ -1,10 +1,9 @@
 ### ☐ SyncCode
+SyncCode is a collaborative coding platform with real-time video integration, enabling seamless teamwork, code sharing, and remote pair programming.
 
 <p align="center">
-  <img src="" alt="_picture" height="560">
+  <img src="./docs/images/frame.png" alt="_picture" height="600">
 </p>
-
-SyncCode is a collaborative coding platform with real-time video integration, enabling seamless teamwork, code sharing, and remote pair programming.
 
 - **Real-time Collaboration**  
   Collaborate on code with live cursor sharing, synchronized highlighting, and follow mode to enhance team productivity and visibility.
