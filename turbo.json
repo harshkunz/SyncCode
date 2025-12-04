@@ -5,7 +5,7 @@
     "client#build": {
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**"],
-      "env": ["SENTRY_AUTH_TOKEN"],
+      "env": ["SENTRY_AUTH_TOKEN", "GITHUB_CLIENT_SECRET_DEV", "SENTRY_SUPPRESS_TURBOPACK_WARNING", "KASCA_SERVER_MONITOR_ID", "NODE_ENV", "NEXT_PUBLIC_CLIENT_URL", "NEXT_PUBLIC_SERVER_URL", "GITHUB_CLIENT_ID_PROD", "GITHUB_CLIENT_SECRET_PROD"],
       "cache": true
     },
     "server#build": {
@@ -15,6 +15,7 @@
     },
     "@codex/types#build": {
       "outputs": ["dist/**/*.d.ts", "dist/**/*.js"],
+      "env": ["GITHUB_CLIENT_SECRET_DEV", "SENTRY_SUPPRESS_TURBOPACK_WARNING", "KASCA_SERVER_MONITOR_ID", "NODE_ENV"],
       "cache": true
     },
     "build": {
