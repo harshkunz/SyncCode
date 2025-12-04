@@ -9,8 +9,6 @@
 
 'use client';
 
-import Link from 'next/link';
-
 import { Home } from 'lucide-react';
 
 import { BASE_CLIENT_URL } from '@/lib/constants';
@@ -28,10 +26,10 @@ export default function NotFound() {
         </AlertDescription>
         <div className="mt-6 flex justify-end">
           <Button variant="default" asChild className="gap-2">
-            <Link href={BASE_CLIENT_URL}>
+            <a href={BASE_CLIENT_URL}>
               <Home className="size-4" />
               Return Home
-            </Link>
+            </a>
           </Button>
         </div>
       </Alert>
