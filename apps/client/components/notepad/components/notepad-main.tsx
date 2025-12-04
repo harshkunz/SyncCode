@@ -163,7 +163,7 @@ const MarkdownEditorMain = ({ markdown }: MarkdownEditorProps) => {
       markdown={contentRef.current}
       autoFocus={false}
       trim={false}
-      placeholder="All participants can edit this note..."
+      placeholder="write here..."
       plugins={plugins}
       className={cn(
         `flex w-full flex-col !bg-[color:var(--panel-background)] !font-sans

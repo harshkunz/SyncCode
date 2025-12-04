@@ -122,7 +122,7 @@ const Status = () => {
         isInitialLoad && 'cursor-wait'
       )}
       href={''}
-      target="_blank"
+      target=""
       rel="noreferrer"
       aria-label={`Server Status: ${systemStatus.description}`}
     >

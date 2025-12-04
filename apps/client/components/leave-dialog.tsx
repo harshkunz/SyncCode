@@ -61,7 +61,7 @@ const LeaveDialog = forwardRef<LeaveDialogRef>((props, ref) => {
         <DialogContent>
           <DialogHeader>
             <DialogTitle className='text-sm font-mono mb-1'>{DEFAULT_TITLE}</DialogTitle>
-            <DialogDescription className='font-mono text-xs text-gray-300'>{DEFAULT_DESCRIPTION}</DialogDescription>
+            <DialogDescription className='font-mono text-xs'>{DEFAULT_DESCRIPTION}</DialogDescription>
           </DialogHeader>
           <DialogFooter>
             <DialogClose asChild>

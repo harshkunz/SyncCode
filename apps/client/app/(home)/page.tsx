@@ -66,7 +66,7 @@ export default async function Page({ searchParams }: PageProps<'/'>) {
           </div>
         </div>
         {/* Bottom buttons */}
-        <div className="dark fixed bottom-2.5 right-3 flex items-center gap-x-3 scale-90">
+        <div className="dark fixed bottom-2.5 right-4 flex items-center gap-x-4 scale-90">
           <Status />
           <LatencyTestButton />
         </div>

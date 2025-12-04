@@ -62,7 +62,7 @@ const RoomAccessForm = ({ roomId }: RoomAccessFormProps) => {
         loading: 'Joining room, please wait...',
         success: () => {
           router.push(`/room/${roomId}`);
-          return 'Joined room successfully. Happy coding!';
+          return 'Room joined.';
         },
         error: error => `Failed to join room.\n${parseError(error)}`
       });
@@ -83,7 +83,7 @@ const RoomAccessForm = ({ roomId }: RoomAccessFormProps) => {
         success: roomId => {
           router.push(`/room/${roomId}`);
           navigator.clipboard.writeText(roomId);
-          return 'Room created successfully. Happy coding!';
+          return 'Room created.';
         },
         error: error => `Failed to create room.\n${parseError(error)}`
       });

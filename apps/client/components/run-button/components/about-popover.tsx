@@ -38,8 +38,8 @@ const AboutPopover = () => (
     <PopoverContent className="w-[340px]" sideOffset={8}>
       <div className="space-y-4">
         <div className="space-y-2">
-          <h4 className="font-medium">Code Execution</h4>
-          <div className="text-muted-foreground space-y-2 text-sm">
+          <h4 className="text-md">Code Execution</h4>
+          <div className="text-muted-foreground space-y-2 text-xs">
             <p>Use the dropdown menu to add command-line arguments and input to your program.</p>
             <p>You can cancel execution at any time by clicking the stop button.</p>
             <p>
