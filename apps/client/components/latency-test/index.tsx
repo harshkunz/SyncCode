@@ -162,7 +162,7 @@ const LatencyTest = () => {
 
         {/* Header */}
         <CardHeader className="p-4 mt-[-16px]">
-          <CardTitle className="text-white text-sm sm:text-lg text-center font-mono">
+          <CardTitle className="text-sm sm:text-lg text-center font-mono">
             Server Latency Test
           </CardTitle>
         </CardHeader>
@@ -202,7 +202,7 @@ const LatencyTest = () => {
                   w-4/3 mx-auto py-2
                   rounded-full font-mono
                   bg-gradient-to-r from-blue-700 to-purple-600
-                  text-white text-xs
+                  text-xs
                   shadow-md
                   transition-all duration-300
                   hover:scale-105 hover:shadow-2xl
@@ -243,7 +243,7 @@ const LatencyTest = () => {
 
                 {/* Results Table */}
                 <Table className="
-                  bg-white/5 text-sm text-white rounded-2xl overflow-hidden 
+                  bg-white/5 text-sm rounded-2xl overflow-hidden 
                   backdrop-blur-lg border border-white/10 text-center
                 ">
                   <TableHeader>
@@ -267,7 +267,7 @@ const LatencyTest = () => {
                 {/* Stats Table */}
                 {httpStats && socketStats && (
                   <Table className="
-                    bg-white/5 text-sm text-white rounded-2xl overflow-hidden 
+                    bg-white/5 text-sm rounded-2xl overflow-hidden 
                     backdrop-blur-lg border border-white/10 text-center table-fixed w-full
                   ">
                     <TableHeader >
