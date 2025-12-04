@@ -12,7 +12,6 @@
 'use client';
 
 import { useEffect, useState, type ChangeEvent } from 'react';
-import Link from 'next/link';
 
 import { ArrowLeft } from 'lucide-react';
 import { Socket } from 'socket.io-client';
@@ -155,10 +154,10 @@ const LatencyTest = () => {
             hover:scale-105 transition-all duration-300
           "
         >
-          <Link href={BASE_CLIENT_URL}>
+          <a href={BASE_CLIENT_URL}>
             <ArrowLeft className="w-5 h-5 text-purple-500" />
             <span>Go back</span>
-          </Link>
+          </a>
         </Button>
 
         {/* Header */}
