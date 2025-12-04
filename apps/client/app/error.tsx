@@ -11,10 +11,11 @@
 
 import type { Route } from 'next';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 import { Bug, Home, RefreshCcw } from 'lucide-react';
 
-import { BASE_CLIENT_URL, CONTACT_URL, IS_DEV_ENV } from '@/lib/constants';
+import { CONTACT_URL, IS_DEV_ENV } from '@/lib/constants';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 
@@ -25,6 +26,12 @@ export default function Error({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  const [homeUrl, setHomeUrl] = useState<string>('');
+
+  useEffect(() => {
+    setHomeUrl(window.location.origin);
+  }, []);
+
   const generateErrorReport = () => {
     const timestamp = new Date().toISOString();
     let errorMessage = `Error Details:
@@ -63,7 +70,7 @@ Stack: ${error.stack || 'No stack trace available'}`;
             </Link>
           </Button>
           <Button variant="default" asChild className="gap-2">
-            <a href={BASE_CLIENT_URL}>
+            <a href={homeUrl || '/'}>
               <Home className="size-4" />
               Return Home
             </a>
