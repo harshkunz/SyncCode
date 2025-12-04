@@ -7,9 +7,8 @@
  */
 
 const ALLOWED_ORIGINS = [
-  'https://codex.dulapahv.dev',
-  'https://codex.vercel.app',
-  'https://dev-codex.dulapahv.dev',
+  process.env.CLIENT_URL,
+  process.env.SERVER_URL,
   'http://localhost:3000'
 ] as const;
 

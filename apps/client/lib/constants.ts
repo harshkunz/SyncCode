@@ -12,17 +12,15 @@ export const IS_DEV_ENV =
   process.env.NEXT_PUBLIC_ENV === 'development' ||
   process.env.NODE_ENV === 'development';
 
-export const BASE_CLIENT_URL = IS_DEV_ENV ? 'http://localhost:3000' : 'https://default-client-url.com';     // make changes in url
-export const BASE_SERVER_URL = IS_DEV_ENV
-  ? 'http://localhost:3001'
-  : 'https://default-server-url.com';
+export const BASE_CLIENT_URL = IS_DEV_ENV ? 'http://localhost:3000' : process.env.NEXT_PUBLIC_CLIENT_URL;
+export const BASE_SERVER_URL = IS_DEV_ENV ? 'http://localhost:3001' : process.env.NEXT_PUBLIC_SERVER_URL;
 
-export const STATUS_URL = '';      // change status url
+export const STATUS_URL = 'https://your-status-monitoring-url.com';      
 export const KASCA_SERVER_MONITOR_ID = '2887417';
 
 export const GITHUB_API_URL = 'https://api.github.com';
 export const GITHUB_OAUTH_URL = 'https://github.com/login/oauth';
-export const GITHUB_CLIENT_ID = IS_DEV_ENV ? 'Ov23liotX97wyOcR9CiF' : '';     // change ids
+export const GITHUB_CLIENT_ID = IS_DEV_ENV ? 'Ov23liotX97wyOcR9CiF' : process.env.GITHUB_CLIENT_ID_PROD;
 export const GITHUB_CLIENT_SECRET = IS_DEV_ENV
   ? process.env.GITHUB_CLIENT_SECRET_DEV
   : process.env.GITHUB_CLIENT_SECRET_PROD;

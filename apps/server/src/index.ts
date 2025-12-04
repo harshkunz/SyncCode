@@ -68,7 +68,7 @@ app.listen(PORT, token => {
   if (!token) {
     console.warn(`Port ${PORT} is already in use`);
   }
-  console.log(`codex-server listening on port: ${PORT}`);
+  console.log(`server listening on port: ${PORT}`);
 });
 
 app.get('/', (res, req) => {
@@ -80,7 +80,7 @@ app.get('/', (res, req) => {
   });
   res.writeHeader('Content-Type', 'text/plain');
 
-  res.end('Hello from codex-server! Go to https://codex.dulapahv.dev/ to start coding.');
+  res.end('Server is Running');
 });
 
 io.on('connection', socket => {
