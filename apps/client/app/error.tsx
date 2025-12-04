@@ -11,7 +11,6 @@
 
 import type { Route } from 'next';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
 
 import { Bug, Home, RefreshCcw } from 'lucide-react';
 
@@ -26,11 +25,6 @@ export default function Error({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
-  const [homeUrl, setHomeUrl] = useState<string>('');
-
-  useEffect(() => {
-    setHomeUrl(window.location.origin);
-  }, []);
 
   const generateErrorReport = () => {
     const timestamp = new Date().toISOString();
@@ -70,7 +64,7 @@ Stack: ${error.stack || 'No stack trace available'}`;
             </Link>
           </Button>
           <Button variant="default" asChild className="gap-2">
-            <a href={homeUrl || '/'}>
+            <a href="/">
               <Home className="size-4" />
               Return Home
             </a>

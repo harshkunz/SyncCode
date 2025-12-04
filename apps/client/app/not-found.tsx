@@ -7,16 +7,12 @@
 
  */
 
-'use client';
-
 import { Home } from 'lucide-react';
 
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 
 export default function NotFound() {
-  const homeUrl = typeof window !== 'undefined' ? window.location.origin : '/';
-  
   return (
     <div className="flex min-h-screen flex-col items-center justify-center p-4">
       <Alert className="max-w-lg">
@@ -27,7 +23,7 @@ export default function NotFound() {
         </AlertDescription>
         <div className="mt-6 flex justify-end">
           <Button variant="default" asChild className="gap-2">
-            <a href={homeUrl}>
+            <a href="/">
               <Home className="size-4" />
               Return Home
             </a>
