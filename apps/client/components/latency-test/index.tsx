@@ -35,7 +35,7 @@ import { Spinner } from '@/components/spinner';
 import type { TestResult } from './types';
 import { calculateStats } from './utils';
 
-const DEFAULT_ITERATIONS = 10;
+const DEFAULT_ITERATIONS = 3;
 const MIN_ITERATIONS = 1;
 const MAX_ITERATIONS = 50;
 
