@@ -23,7 +23,7 @@ SyncCode is a collaborative coding platform with real-time video integration, en
 - **Video & Voice Chat**  
   Communicate with your team using integrated video and voice chat, ensuring smooth coordination during collaborative sessions.
 
-### ☐ Tech Stack
+### ☐ Toolkit
 
 #### Frontend
 - **Framework:** Next.js, TypeScript
