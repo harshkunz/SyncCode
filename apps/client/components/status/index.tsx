@@ -94,7 +94,7 @@ const Status = () => {
       console.error('Error fetching server status:', error);
       setSystemStatus({
         color: 'bg-muted-foreground',
-        label: 'Error Fetching Server Status',
+        label: '',
         description: 'Failed to fetch server status'
       });
     } finally {
@@ -118,7 +118,7 @@ const Status = () => {
     <a
       className={cn(
         `text-foreground/70 hover:text-foreground/50 flex items-center gap-x-2 text-sm underline-offset-2
-        transition-all hover:underline`,
+        transition-all`,
         isInitialLoad && 'cursor-wait'
       )}
       href={''}
@@ -129,7 +129,7 @@ const Status = () => {
       {isInitialLoad ? (
         <>
           <Spinner />
-          <span>Checking Server Status...</span>
+          <span>Server Testing</span>
         </>
       ) : (
         <>
