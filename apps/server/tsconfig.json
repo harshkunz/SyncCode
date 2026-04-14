@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "esModuleInterop": true,
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "sourceMap": true,
+    "rootDir": "../..",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@synccode/types/*": ["../../packages/types/*"]
+    },
+    "lib": ["ESNext"],
+  },
+  "include": ["src/**/*",]
+}
