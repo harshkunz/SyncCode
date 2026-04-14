@@ -1,0 +1,10 @@
+# Dependencies
+**/node_modules
+.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# Environment Variables
+**/.env
+**/.env*.local
+#**/.env.sentry-build-plugin
