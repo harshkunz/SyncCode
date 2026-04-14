@@ -13,7 +13,13 @@
       "@/*": ["./src/*"],
       "@synccode/types/*": ["../../packages/types/*"]
     },
+    "types": ["node", "jest"],
     "lib": ["ESNext"],
   },
-  "include": ["src/**/*", "jest.setup.ts", "jest.config.ts"]
+  "include": [
+    "src/**/*",
+    "tests/**/*",       
+    "jest.setup.ts",
+    "jest.config.ts"
+  ]
 }
