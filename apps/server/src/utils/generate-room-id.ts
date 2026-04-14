@@ -1,9 +1,9 @@
 /*
  Room ID generator function
  Features:
-    8 character random IDs
-    Alphanumeric characters
-    Uppercase letters only
+    - 8 character random IDs
+    - Alphanumeric characters
+    - Uppercase letters only
 */
 
 export const generateRoomID = () => {
