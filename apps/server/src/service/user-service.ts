@@ -88,6 +88,7 @@ export const disconnect = (socket: Socket): void => {
 export const updateCursor = (socket: Socket, cursor: Cursor): void => {
   const roomId = getUserRoom(socket);
   const userData = socketToUserData.get(socket.id);
+  if (!roomId || !userData) return;
 
   if (userData) {
     socket.to(roomId).emit(CodeServiceMsg.UPDATE_CURSOR, userData.customId, cursor);
