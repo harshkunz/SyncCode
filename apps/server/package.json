@@ -7,10 +7,12 @@
     "start": "nodemon -r tsconfig-paths/register src/index.ts"
   },
   "dependencies": {
+    "simple-peer": "^9.11.1",
     "socket.io": "^4.8.1",
     "uWebSockets.js": "github:uNetworking/uWebSockets.js#v20.52.0"
   },
   "devDependencies": {
+    "@types/simple-peer": "^9.11.9",
     "nodemon": "^3.1.10",
     "socket.io-client": "^4.8.1",
     "start-server-and-test": "^2.1.2",

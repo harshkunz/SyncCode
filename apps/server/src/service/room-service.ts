@@ -15,6 +15,7 @@ import type { ExecutionResult } from '@synccode/types/terminal';
 import { generateRoomID } from '@/utils/generate-room-id';
 import { normalizeRoomId } from '@/utils/normalize-room-id';
 
+import * as codeService from './code-service';
 import * as userService from './user-service';
 
 // Cache for room users to reduce repeated lookups
@@ -34,6 +35,25 @@ export const getUserRoom = (socket: Socket): string | undefined => {
   return undefined;
 };
 
+/**
+ * Creates a new room and joins the socket to it
+ */
+export const create = async (socket: Socket, name: string): Promise<void> => {
+  const customId = userService.connect(socket, name);
+
+  // Generate unique room ID
+  let roomID: string;
+  do {
+    roomID = generateRoomID();
+  } while (codeService.roomExists(roomID));
+
+  await socket.join(roomID);
+
+  // Initialize room cache
+  roomUsersCache.set(roomID, { [customId]: name });
+
+  socket.emit(RoomServiceMsg.CREATE, roomID, customId);
+};
 
 /**
  * Joins an existing room with optimized user management
@@ -82,7 +102,7 @@ export const leave = async (socket: Socket, io: Server): Promise<void> => {
       delete users[customId];
       if (Object.keys(users).length === 0) {
         roomUsersCache.delete(roomID);
-        //codeService.deleteRoom(roomID);
+        codeService.deleteRoom(roomID);
       } else {
         roomUsersCache.set(roomID, users);
       }
@@ -101,6 +121,42 @@ export const leave = async (socket: Socket, io: Server): Promise<void> => {
   }
 };
 
+/**
+ * Gets users in a room with caching for better performance
+ */
+export const getUsersInRoom = (
+  socket: Socket,
+  io: Server,
+  roomID: string = getUserRoom(socket)
+): Record<string, string> => {
+  // Return empty object if no room
+  if (!roomID) return {};
+
+  // Check cache first
+  let users = roomUsersCache.get(roomID);
+
+  // If not in cache, rebuild it
+  if (!users) {
+    const room = io.sockets.adapter.rooms.get(roomID);
+    if (!room) return {};
+
+    users = {};
+    for (const socketId of room) {
+      const username = userService.getUsername(socketId);
+      const customId = userService.getSocCustomId(io.sockets.sockets.get(socketId));
+      if (username && customId) {
+        users[customId] = username;
+      }
+    }
+
+    // Update cache
+    roomUsersCache.set(roomID, users);
+  }
+
+  // Update client
+  io.to(socket.id).emit(RoomServiceMsg.SYNC_USERS, users);
+  return users;
+};
 
 /**
  * Clean up room cache when server restarts or room is deleted

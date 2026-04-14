@@ -1,15 +1,17 @@
-/*
- User management service for handling user identity and state.
-  Features:
-    - User ID generation
-    - Socket/user mapping
-    - Data persistence
+/**
+ * User management service for handling user identity and state.
+ * Features:
+ * - User ID generation
+ * - Socket/user mapping
+ * - Data persistence
  */
 
 import type { Socket } from 'socket.io';
 
 import { CodeServiceMsg } from '@synccode/types/message';
 import type { Cursor } from '@synccode/types/operation';
+
+import { getUserRoom } from './room-service';
 
 // Use a single Map for user data to reduce memory overhead
 type UserData = {
@@ -21,9 +23,9 @@ type UserData = {
 const socketToUserData = new Map<string, UserData>();
 const customIdToSocketId = new Map<string, string>();
 
-/*
-  Generates the next available ID in sequence (A, B, C, ..., Z, AA, AB, ...)
-  No upper limit on possible combinations
+/**
+ * Generates the next available ID in sequence (A, B, C, ..., Z, AA, AB, ...)
+ * No upper limit on possible combinations
  */
 const generateCustomId = (): string => {
   const generateId = (num: number): string => {
@@ -46,16 +48,16 @@ const generateCustomId = (): string => {
   return newId;
 };
 
-/*
-  Get username with O(1) lookup
+/**
+ * Get username with O(1) lookup
  */
 export const getUsername = (socketId: string): string | undefined => {
   return socketToUserData.get(socketId)?.username;
 };
 
-/*
-  Connect user with optimized data storage
-  Returns assigned custom ID
+/**
+ * Connect user with optimized data storage
+ * Returns assigned custom ID
  */
 export const connect = (socket: Socket, username: string): string => {
   const customId = generateCustomId();
@@ -67,8 +69,8 @@ export const connect = (socket: Socket, username: string): string => {
   return customId;
 };
 
-/*
-  Efficiently clean up user data on disconnect
+/**
+ * Efficiently clean up user data on disconnect
  */
 export const disconnect = (socket: Socket): void => {
   const userData = socketToUserData.get(socket.id);
@@ -80,30 +82,40 @@ export const disconnect = (socket: Socket): void => {
   socket.disconnect();
 };
 
+/**
+ * Optimized cursor update broadcasting
+ */
+export const updateCursor = (socket: Socket, cursor: Cursor): void => {
+  const roomId = getUserRoom(socket);
+  const userData = socketToUserData.get(socket.id);
 
-/*
-  Get custom ID with O(1) lookup
+  if (userData) {
+    socket.to(roomId).emit(CodeServiceMsg.UPDATE_CURSOR, userData.customId, cursor);
+  }
+};
+/**
+ * Get custom ID with O(1) lookup
  */
 export const getSocCustomId = (socket: Socket): string | undefined => {
   return socketToUserData.get(socket.id)?.customId;
 };
 
-/*
-  Get socket ID from custom ID with O(1) lookup
+/**
+ * Get socket ID from custom ID with O(1) lookup
  */
 export const getSocketId = (customId: string): string | undefined => {
   return customIdToSocketId.get(customId);
 };
 
-/*
-  Get custom ID from socket ID with O(1) lookup
+/**
+ * Get custom ID from socket ID with O(1) lookup
  */
 export const getCustomId = (socketId: string): string | undefined => {
   return socketToUserData.get(socketId)?.customId;
 };
 
-/*
-  Check if custom ID exists with O(1) lookup
+/**
+ * Check if custom ID exists with O(1) lookup
  */
 export const isCustomIdInUse = (customId: string): boolean => {
   return customIdToSocketId.has(customId);

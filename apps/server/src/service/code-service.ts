@@ -69,6 +69,17 @@ export const setLang = (roomID: string, langId: string): void => {
 };
 
 /**
+ * Optimized code sync
+ */
+export const syncCode = (socket: Socket, io: Server): void => {
+  const customId = getCustomId(socket.id);
+  if (customId) {
+    const code = getCode(getUserRoom(socket));
+    io.to(socket.id).emit(CodeServiceMsg.SYNC_CODE, code);
+  }
+};
+
+/**
  * Optimized language sync
  */
 export const syncLang = (socket: Socket, io: Server): void => {
