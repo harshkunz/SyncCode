@@ -1,0 +1,49 @@
+/**
+ * Global CSS styles and variables.
+ * Includes:
+ * - Tailwind CSS directives
+ * - Selection styles
+ * - Scrollbar customization
+
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*::selection {
+  @apply bg-[#fb568a] text-red-100;
+}
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  --toolbar-bg-primary: #2678ca;
+  --toolbar-bg-secondary: #3c3c3c;
+  --toolbar-foreground: #fff;
+  --toolbar-accent: #2678ca;
+  --panel-text-accent: #fff;
+  --panel-background: #1e1e1e;
+  --status-bar-text: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {}
+}
+
+
