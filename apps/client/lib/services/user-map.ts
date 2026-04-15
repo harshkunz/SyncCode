@@ -9,6 +9,8 @@
 
 import type { User } from '@synccode/types/user';
 
+import { getBackgroundColor, getTextColor } from '@/lib/utils';
+
 interface UserData {
   username: string;
   backgroundColor: string;
@@ -26,8 +28,8 @@ export class UserMap {
   private calculateUserData(username: string): UserData {
     return {
       username,
-      backgroundColor: "",
-      textColor: "",
+      backgroundColor: getBackgroundColor(username),
+      textColor: getTextColor(getBackgroundColor(username))
     };
   }
 
@@ -56,6 +58,25 @@ export class UserMap {
   // Clear all users
   clear(): void {
     this.users.clear();
+  }
+
+  // Get cached background color by ID
+  getBackgroundColor(id: string): string {
+    return this.users.get(id)?.backgroundColor ?? getBackgroundColor('');
+  }
+
+  // Get cached text color by ID
+  getTextColor(id: string): string {
+    return this.users.get(id)?.textColor ?? getTextColor('');
+  }
+
+  // Get all colors for a user
+  getColors(id: string): { backgroundColor: string; color: string } {
+    const userData = this.users.get(id);
+    return {
+      backgroundColor: userData?.backgroundColor ?? getBackgroundColor(''),
+      color: userData?.textColor ?? getTextColor('')
+    };
   }
 
   // Get all users as an array of User objects
