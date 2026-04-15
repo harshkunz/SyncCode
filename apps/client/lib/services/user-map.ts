@@ -35,6 +35,29 @@ export class UserMap {
   add(id: string, username: string): void {
     this.users.set(id, this.calculateUserData(username));
   }
+
+  // Add multiple users at once
+  addBulk(usersDict: Record<string, string>): void {
+    Object.entries(usersDict).forEach(([id, username]) => {
+      this.add(id, username);
+    });
+  }
+
+  // Get username by ID
+  get(id: string): string | undefined {
+    return this.users.get(id)?.username;
+  }
+
+  // Delete a user by ID
+  delete(id: string): boolean {
+    return this.users.delete(id);
+  }
+
+  // Clear all users
+  clear(): void {
+    this.users.clear();
+  }
+  
 }
 
 // Create a singleton instance
