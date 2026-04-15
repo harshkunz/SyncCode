@@ -57,7 +57,14 @@ export class UserMap {
   clear(): void {
     this.users.clear();
   }
-  
+
+  // Get all users as an array of User objects
+  getAll(): User[] {
+    return Array.from(this.users.entries()).map(([id, data]) => ({
+      id,
+      username: data.username
+    }));
+  }
 }
 
 // Create a singleton instance
