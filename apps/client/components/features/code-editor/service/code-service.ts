@@ -30,7 +30,7 @@ import type { EditOp } from '@synccode/types/operation';
  * ```
  *
  * @remarks
- * Uses [`EditOp`](@codex/types/operation.ts) type for operation data
+ * Uses [`EditOp`](@synccode/types/operation.ts) type for operation data
  */
 export const updateCode = (
   op: EditOp,

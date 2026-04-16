@@ -129,7 +129,7 @@ export const executeCode = async (
 
     if (!response.ok) {
       throw new Error(
-        `HTTP error! status: ${response.status}\nThis language may not be supported or the server is down.\nList of supported languages: https://github.com/dulapahv/CodeX/blob/main/manual.md#supported-execution-languages.`
+        `HTTP error! status: ${response.status}\nThis language may not be supported or the server is down.\nList of supported languages: ' '#supported-execution-languages.`
       );
     }
 

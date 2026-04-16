@@ -15,7 +15,7 @@ const WelcomeMsg = () => (
     <div className="flex items-center gap-2 text-sm">
       <Image
         src="/images/icon.svg"
-        alt="CodeX Logo"
+        alt="Synccode Logo"
         className="size-5"
         width="16"
         height="16"
