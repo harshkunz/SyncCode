@@ -20,7 +20,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 
 import { Output } from './components/output';
 import { WelcomeMsg } from './components/welcome-msg';
-import { handleDownloadLogs } from './utils';
+import { handleDownloadLogs } from './lib/utils';
 
 interface TerminalProps {
   results: ExecutionResult[];
