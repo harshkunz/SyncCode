@@ -17,7 +17,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Spinner } from '@/components/shared/spinner';
 
-import type { JoinRoomForm } from '../types';
+import type { JoinRoomForm } from '../lib/types';
 
 interface InvitedSectionProps {
   register: UseFormRegister<JoinRoomForm>;

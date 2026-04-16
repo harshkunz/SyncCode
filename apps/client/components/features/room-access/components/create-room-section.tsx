@@ -17,7 +17,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Spinner } from '@/components/shared/spinner';
 
-import type { CreateRoomForm } from '../types';
+import type { CreateRoomForm } from '../lib/types';
 
 interface CreateRoomSectionProps {
   register: UseFormRegister<CreateRoomForm>;

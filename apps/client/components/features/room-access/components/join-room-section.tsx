@@ -22,8 +22,8 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Spinner } from '@/components/shared/spinner';
 
-import type { JoinRoomForm } from '../types';
-import { onRoomIdChange } from '../utils';
+import type { JoinRoomForm } from '../lib/types';
+import { onRoomIdChange } from '../lib/utils';
 
 interface JoinRoomSectionProps {
   register: UseFormRegister<JoinRoomForm>;
