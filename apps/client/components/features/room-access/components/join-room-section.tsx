@@ -23,7 +23,7 @@ import { Label } from '@/components/ui/label';
 import { Spinner } from '@/components/shared/spinner';
 
 import type { JoinRoomForm } from '../types';
-//import { onRoomIdChange } from '';
+import { onRoomIdChange } from '../utils';
 
 interface JoinRoomSectionProps {
   register: UseFormRegister<JoinRoomForm>;
