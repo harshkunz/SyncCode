@@ -77,7 +77,7 @@ if (isDesktop) {
     <Dialog
       open={isOpen}
       onOpenChange={setIsOpen}
-      aria-label="About CodeX"
+      aria-label="About syncCode"
     >
       <DialogContent className={cn(
         "max-w-md mx-auto p-8 rounded-2xl border border-white/20 shadow-lg backdrop-blur-xl bg-black/90",
@@ -125,7 +125,7 @@ return (
   <Drawer
     open={isOpen}
     onOpenChange={setIsOpen}
-    aria-label="About CodeX"
+    aria-label="About syncCode"
   >
     <DrawerContent className="mx-auto max-w-sm p-6 rounded-2xl border border-white/20 shadow-lg backdrop-blur-xl bg-black/95">
       <DrawerHeader className="text-center pb-2">

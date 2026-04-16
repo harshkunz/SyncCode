@@ -33,7 +33,7 @@ const ExternalLink = ({ forceDark = false }: ExternalLinkProps) => {
           aria-label="Visit portfolio website (opens in new tab)"
         >
           <Image
-            src="/images/codex-logo.svg"
+            src="/images/synccode-logo.svg"
             alt="Mirai logo"
             className="mr-2"
             width={16}
@@ -64,7 +64,7 @@ const ExternalLink = ({ forceDark = false }: ExternalLinkProps) => {
           href={REPO_URL}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Visit CodeX GitHub repository (opens in new tab)"
+          aria-label="Visit syncCode GitHub repository (opens in new tab)"
         >
           <Image
             src={`/images/${resolvedTheme === 'light' && !forceDark ? 'octocat' : 'octocat-white'}.svg`}
