@@ -15,7 +15,7 @@ import type { FieldErrors, UseFormHandleSubmit, UseFormRegister } from 'react-ho
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Spinner } from '@/components/shared/spinner';
+import { Spinner } from '@/components/main/spinner';
 
 import type { CreateRoomForm } from '../lib/types';
 

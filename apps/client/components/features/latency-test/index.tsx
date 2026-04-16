@@ -30,7 +30,7 @@ import {
   TableHeader,
   TableRow
 } from '@/components/ui/table';
-import { Spinner } from '@/components/shared/spinner';
+import { Spinner } from '@/components/main/spinner';
 
 import type { TestResult } from './lib/types';
 import { calculateStats } from './lib/utils';
