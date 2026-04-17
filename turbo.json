@@ -1,3 +1,60 @@
 {
-    
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["**/.env"],
+  "tasks": {
+    "client#build": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**", "!.next/cache/**"],
+      "env": ["SENTRY_AUTH_TOKEN", "GITHUB_CLIENT_SECRET_DEV", "SENTRY_SUPPRESS_TURBOPACK_WARNING", "KASCA_SERVER_MONITOR_ID", "NODE_ENV", "NEXT_PUBLIC_CLIENT_URL", "NEXT_PUBLIC_SERVER_URL", "GITHUB_CLIENT_ID_PROD", "GITHUB_CLIENT_SECRET_PROD"],
+      "cache": true
+    },
+    "server#build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"],
+      "cache": true
+    },
+    "@synccode/types#build": {
+      "outputs": ["dist/**/*.d.ts", "dist/**/*.js"],
+      "env": ["GITHUB_CLIENT_SECRET_DEV", "SENTRY_SUPPRESS_TURBOPACK_WARNING", "KASCA_SERVER_MONITOR_ID", "NODE_ENV"],
+      "cache": true
+    },
+    "build": {
+      "dependsOn": ["^build"],
+      "cache": true,
+      "outputs": []
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "client#test:e2e": {
+      "cache": false,
+      "outputs": ["playwright-report/**", "test-results/**"],
+      "env": ["BETTERSTACK_API_KEY"]
+    },
+    "client#test:e2e:ui": {
+      "cache": false,
+      "env": ["BETTERSTACK_API_KEY"]
+    },
+    "server#test:socket": {
+      "cache": true,
+      "outputs": ["test-results/**"]
+    },
+    "server#test:socket:remote": {
+      "cache": false,
+      "outputs": ["test-results/**"]
+    },
+    "lint": {
+      "cache": true
+    },
+    "lint:fix": {
+      "cache": true
+    },
+    "format": {
+      "cache": true
+    },
+    "format:fix": {
+      "cache": true
+    }
+  }
 }
