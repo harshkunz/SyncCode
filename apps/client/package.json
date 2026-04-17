@@ -5,7 +5,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "eslint --cache",
+    "lint:fix": "eslint --fix --cache",
+    "format": "prettier --check",
+    "format:fix": "prettier --write"
   },
   "dependencies": {
     "@codesandbox/sandpack-react": "^2.20.0",
