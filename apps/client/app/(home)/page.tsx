@@ -9,7 +9,7 @@
  */
 
 import { Suspense } from 'react';
-//import { LatencyTestButton } from '@/components/latency-test-button';
+import { LatencyTestButton } from '@/components/shared/latency-test-button';
 import { RoomAccessForm } from '@/components/features/room-access';
 
 import { Status } from '@/components/features/server-status';
@@ -68,7 +68,7 @@ export default async function Page({ searchParams }: PageProps<'/'>) {
         {/* Bottom buttons */}
         <div className="dark fixed bottom-2.5 right-4 flex items-center gap-x-4 scale-90">
           <Status />
-          {/* <LatencyTestButton /> */}
+          <LatencyTestButton />
         </div>
       </main>
     </>
