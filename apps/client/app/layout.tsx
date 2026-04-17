@@ -10,6 +10,7 @@
  */
 
 import type { Metadata, Viewport } from 'next';
+import './globals.css';
 
 import { GeistMono } from 'geist/font/mono';
 import { GeistSans } from 'geist/font/sans';
@@ -19,8 +20,6 @@ import { Toaster } from '@/components/ui/sonner';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { Analytics } from '@/components/shared/analytics';
 import { ThemeProvider } from '@/components/shared/theme-provider';
-
-import './global.css';
 
 // export const runtime = 'edge';
 
