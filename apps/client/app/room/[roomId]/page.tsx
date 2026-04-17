@@ -39,7 +39,7 @@ import { Terminal } from '@/components/features/terminal';
 import { Toolbar } from '@/components/features/toolbar';
 import { WebcamStream } from '@/components/features/webcam-stream';
 
-import { FollowUser } from '@/components/shared/follow-user';
+import { FollowUser } from '@/components/shared/follow-button';
 import { LeaveButton } from '@/components/shared/leave-button';
 import { RemotePointers } from '@/components/shared/remote-pointers';
 import { SettingsButton } from '@/components/shared/settings-button';

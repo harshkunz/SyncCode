@@ -14,7 +14,7 @@ import { LogOut } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
-import { LeaveDialog, type LeaveDialogRef } from '@/components/shared/leave-dialog';
+import { LeaveDialog, type LeaveDialogRef } from '@/components/features/dialog-box/leave-dialog';
 
 interface LeaveButtonProps {
   readonly className?: string;

@@ -14,7 +14,7 @@ import { Share } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog } from '@/components/ui/dialog';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
-import { ShareDialog, ShareDialogRef } from '@/components/shared/share-dialog';
+import { ShareDialog, ShareDialogRef } from '@/components/features/dialog-box/share-dialog';
 
 interface RoomProps {
   roomId: string;
