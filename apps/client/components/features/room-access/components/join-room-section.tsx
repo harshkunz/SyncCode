@@ -20,7 +20,7 @@ import type {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Spinner } from '@/components/main/spinner';
+import { Spinner } from '@/components/shared/spinner';
 
 import type { JoinRoomForm } from '../lib/types';
 import { onRoomIdChange } from '../lib/utils';

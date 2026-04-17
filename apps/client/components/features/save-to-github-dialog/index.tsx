@@ -47,7 +47,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { RepoBrowser } from '@/components/features/repo-browser';
 import { itemType, type ExtendedTreeDataItem } from '@/components/features/repo-browser/types/tree';
-import { Spinner } from '@/components/main/spinner';
+import { Spinner } from '@/components/shared/spinner';
 
 import { useCommitForm } from './hooks/useCommitForm';
 import { getDisplayPath } from './utils/get-display-path';

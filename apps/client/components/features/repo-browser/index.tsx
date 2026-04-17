@@ -26,7 +26,7 @@ import { useDebounce } from 'use-debounce';
 
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Input } from '@/components/ui/input';
-import { Tree, type TreeDataItem } from '@/components/main/tree';
+import { Tree, type TreeDataItem } from '@/components/shared/tree';
 
 import { LoadingState } from './components/loading-skeleton';
 import { NotFound } from './components/not-found';

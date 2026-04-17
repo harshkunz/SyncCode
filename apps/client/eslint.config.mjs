@@ -24,6 +24,8 @@ const eslintConfig = [
     ignores: [
       '**/node_modules/*',
       '**/.next/*',
+      '**/playwright-report/*',
+      '**/components/ui/*',
       'tailwind.config.ts',
       'out/**',
       'build/**',
@@ -33,7 +35,7 @@ const eslintConfig = [
   {
     files: ['**/*.ts', '**/*.tsx']
   },
-  ...compat.extends('next/core-web-vitals', 'next/typescript')
+  ...compat.extends('next/core-web-vitals', 'next/typescript', 'prettier')
 ];
 
 export default eslintConfig;

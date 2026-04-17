@@ -26,7 +26,7 @@ import useResizeObserver from 'use-resize-observer';
 import { cn } from '@/lib/utils';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { itemType } from '@/components/repo-browser/types/tree';
-import { Spinner } from '@/components/main/spinner';
+import { Spinner } from '@/components/shared/spinner';
 
 // Base interface for tree items
 interface TreeDataItem {

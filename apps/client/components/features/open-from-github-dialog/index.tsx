@@ -47,7 +47,7 @@ import {
 } from '@/components/ui/drawer';
 import { RepoBrowser } from '@/components/features/repo-browser';
 import { itemType, type ExtendedTreeDataItem } from '@/components/features/repo-browser/types/tree';
-import { Spinner } from '@/components/main/spinner';
+import { Spinner } from '@/components/shared/spinner';
 
 import { getDisplayPath } from './lib/utils';
 

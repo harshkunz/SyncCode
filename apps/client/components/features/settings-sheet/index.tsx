@@ -36,7 +36,7 @@ import {
   SheetTitle
 } from '@/components/ui/sheet';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Spinner } from '@/components/main/spinner';
+import { Spinner } from '@/components/shared/spinner';
 
 import { EditorConfig } from './components/editor-config';
 import { EditorThemeSettings } from './components/editor-theme';

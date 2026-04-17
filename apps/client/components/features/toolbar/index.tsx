@@ -17,12 +17,12 @@ import type * as monaco from 'monaco-editor';
 import { REPO_URL } from '@/lib/constants';
 import { useMediaQuery } from '@/hooks/use-media-query';
 import { AboutDialog, type AboutDialogRef } from '@/components/features/about-dialog';
-import { LeaveDialog, type LeaveDialogRef } from '@/components/main/leave-dialog';
+import { LeaveDialog, type LeaveDialogRef } from '@/components/shared/leave-dialog';
 import {
   OpenFromGithubDialog,
   type OpenFromGithubDialogRef
 } from '@/components/features/open-from-github-dialog';
-import { OpenPromptDialog, type OpenPromptDialogRef } from '@/components/main/open-prompt-dialog';
+import { OpenPromptDialog, type OpenPromptDialogRef } from '@/components/shared/open-prompt-dialog';
 import { SaveToGithubDialog, type SaveToGithubDialogRef } from '@/components/features/save-to-github-dialog';
 import { SettingsSheet, type SettingsSheetRef } from '@/components/features/settings-sheet';
 

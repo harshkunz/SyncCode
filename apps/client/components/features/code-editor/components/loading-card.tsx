@@ -11,7 +11,7 @@
 import { memo } from 'react';
 
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Spinner } from '@/components/main/spinner';
+import { Spinner } from '@/components/shared/spinner';
 
 export const LoadingCard = memo(() => (
   <div className="fixed left-0 top-0 flex size-full items-center justify-center p-2 backdrop-blur-sm">

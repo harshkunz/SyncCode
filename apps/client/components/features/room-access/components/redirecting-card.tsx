@@ -9,7 +9,7 @@
  */
 
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Spinner } from '@/components/main/spinner';
+import { Spinner } from '@/components/shared/spinner';
 
 export const RedirectingCard = () => (
   <div

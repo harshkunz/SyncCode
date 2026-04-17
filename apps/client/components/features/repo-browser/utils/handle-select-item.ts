@@ -11,7 +11,7 @@
 
 import type { Dispatch, SetStateAction } from 'react';
 
-import type { TreeDataItem } from '@/components/main/tree';
+import type { TreeDataItem } from '@/components/shared/tree';
 
 import { itemType, type ExtendedTreeDataItem } from '../types/tree';
 import { fetchBranches } from './fetch-branches';

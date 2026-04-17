@@ -13,7 +13,7 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
-import { Spinner } from '@/components/main/spinner';
+import { Spinner } from '@/components/shared/spinner';
 
 import type { BetterStackResponse, ServiceStatus } from './lib/types';
 

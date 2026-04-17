@@ -8,7 +8,7 @@
 *
  */
 
-import type { TreeDataItem } from '@/components/main/tree';
+import type { TreeDataItem } from '@/components/shared/tree';
 
 export enum itemType {
   REPO = 'repo',
