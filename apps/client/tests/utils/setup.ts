@@ -45,7 +45,7 @@ export async function joinRoom(page: Page, roomUrl: string, name: string) {
 }
 
 export async function hasJoinedRoom(page: Page) {
-  await expect(page.getByRole('code')).toBeVisible({ timeout: 50000 }); // Code editor
+  await expect(page.getByLabel('Share this coding room')).toBeVisible({ timeout: 50000 }); // Code editor
 
   return true;
 }
