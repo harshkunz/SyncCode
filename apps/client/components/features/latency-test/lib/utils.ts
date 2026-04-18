@@ -5,7 +5,7 @@
  * - Median
  * - Standard deviation
  *
-*
+ *
  */
 
 import type { Stats } from './types';

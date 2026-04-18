@@ -5,15 +5,15 @@
  * - Panel toggle actions
  * - Editor command bindings
  *
-*
+ *
  */
 
 import { useEffect, useRef } from 'react';
 
 import { Menubar, MenubarContent, MenubarMenu, MenubarTrigger } from '@/components/ui/menubar';
 
-import { createMenuConfig } from './menu-config';
 import type { MenuProps } from '../lib/types';
+import { createMenuConfig } from './menu-config';
 import { SharedMenuItem } from './shared-menu-item';
 
 const DesktopMenu = ({ modKey, actions, notepad, terminal, webcam, livePreview }: MenuProps) => {

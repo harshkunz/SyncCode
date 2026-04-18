@@ -6,7 +6,7 @@
  * - Form validation
  * - Redirection handling
  *
-*
+ *
  */
 
 'use client';
@@ -108,7 +108,7 @@ const RoomAccessForm = ({ roomId }: RoomAccessFormProps) => {
 
   return (
     <Card
-      className="bg-black/10 border border-gray-700 rounded-3xl px-1"
+      className="rounded-3xl border border-gray-700 bg-black/10 px-1"
       role="region"
       aria-label="Room access form"
     >
@@ -118,13 +118,13 @@ const RoomAccessForm = ({ roomId }: RoomAccessFormProps) => {
             isRoomIdValid(roomId) ? (
               <>
                 <div className="space-y-3 text-center" role="status" aria-live="polite">
-                  <p className="text-sm font-mono sm:text-lg">
+                  <p className="font-mono text-sm sm:text-lg">
                     You&apos;ve been invited to a coding session!
                   </p>
-                  <p className="text-sm font-mono sm:text-lg">
+                  <p className="font-mono text-sm sm:text-lg">
                     Room: <span className="font-mono font-bold">{roomId}</span>
                   </p>
-                  <p className="text-sm font-mono sm:text-lg">Enter your name to join the room</p>
+                  <p className="font-mono text-sm sm:text-lg">Enter your name to join the room</p>
                 </div>
                 <InvitedSection
                   register={registerJoin}
@@ -162,7 +162,7 @@ const RoomAccessForm = ({ roomId }: RoomAccessFormProps) => {
                   isJoining={isJoining}
                 />
               </section>
-              <Separator className='bg-gray-700 mt-2.5' />
+              <Separator className="mt-2.5 bg-gray-700" />
               <section aria-label="Join existing room">
                 <JoinRoomSection
                   register={registerJoin}

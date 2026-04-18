@@ -5,7 +5,7 @@
  * - Commit message validation
  * - Type inference exports
  *
-*
+ *
  */
 
 import { z } from 'zod';

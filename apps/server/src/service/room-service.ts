@@ -127,7 +127,7 @@ export const leave = async (socket: Socket, io: Server): Promise<void> => {
 export const getUsersInRoom = (
   socket: Socket,
   io: Server,
-  roomID: string | undefined  = getUserRoom(socket)
+  roomID: string | undefined = getUserRoom(socket)
 ): Record<string, string> => {
   // Return empty object if no room
   if (!roomID) return {};
@@ -143,7 +143,7 @@ export const getUsersInRoom = (
     users = {};
     for (const socketId of room) {
       const sock = io.sockets.sockets.get(socketId);
-      if(!sock) continue;
+      if (!sock) continue;
 
       const username = userService.getUsername(socketId);
       const customId = userService.getSocCustomId(sock);

@@ -5,7 +5,7 @@
  * - Disabled state support
  * - Accessible button with label
  *
-*
+ *
  */
 
 import { ArrowLeft } from 'lucide-react';
@@ -20,7 +20,7 @@ interface BackButtonProps {
 const BackButton = ({ onClick, disabled }: BackButtonProps) => (
   <Button
     variant="link"
-    className="text-xs size-fit font-mono p-0 text-green-600"
+    className="size-fit p-0 font-mono text-xs text-green-600"
     size="sm"
     onClick={onClick}
     disabled={disabled}

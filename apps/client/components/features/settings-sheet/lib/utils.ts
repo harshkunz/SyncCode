@@ -5,7 +5,7 @@
  * - Title case formatting
  * - Settings file handling
  *
-*
+ *
  */
 
 import type { ChangeEvent } from 'react';

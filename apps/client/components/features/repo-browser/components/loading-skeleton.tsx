@@ -5,7 +5,7 @@
  * - Indentation structure simulation
  * - Variable width placeholders
  *
-*
+ *
  */
 
 import { Skeleton } from '@/components/ui/skeleton';

@@ -5,7 +5,7 @@
  * - Cursor position tracking
  * - Selection feedback
  *
-*
+ *
  */
 
 import { memo } from 'react';

@@ -24,12 +24,9 @@ import { initEditorTheme } from '@/lib/init-editor-theme';
 import { userMap } from '@/lib/services/user-map';
 import { getSocket } from '@/lib/socket';
 import { cn, leaveRoom } from '@/lib/utils';
-
 import { useThemeColor } from '@/hooks/use-theme-color';
-
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/resizable';
-
 import { CodeEditor } from '@/components/features/code-editor';
 import { LivePreview } from '@/components/features/live-preview';
 import { Notepad } from '@/components/features/notepad';
@@ -38,7 +35,6 @@ import { StatusBar, type StatusBarCursorPosition } from '@/components/features/s
 import { Terminal } from '@/components/features/terminal';
 import { Toolbar } from '@/components/features/toolbar';
 import { WebcamStream } from '@/components/features/webcam-stream';
-
 import { FollowUser } from '@/components/shared/follow-button';
 import { LeaveButton } from '@/components/shared/leave-button';
 import { RemotePointers } from '@/components/shared/remote-pointers';
@@ -46,7 +42,6 @@ import { SettingsButton } from '@/components/shared/settings-button';
 import { ShareButton } from '@/components/shared/share-button';
 import { Spinner } from '@/components/shared/spinner';
 import { UserList } from '@/components/shared/user-list';
-
 
 const MemoizedToolbar = memo(function MemoizedToolbar({
   monaco,

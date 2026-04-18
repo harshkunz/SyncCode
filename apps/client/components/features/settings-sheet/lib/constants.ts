@@ -8,7 +8,7 @@
  *
  * From: https://microsoft.github.io/monaco-editor/typedoc/variables/editor.EditorOptions.html
  *
-*
+ *
  */
 
 export const SELECT_OPTIONS: Record<string, string[]> = {

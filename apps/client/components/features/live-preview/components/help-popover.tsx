@@ -5,7 +5,7 @@
  * - Pre-installed libraries list
  * - External links
  *
-*
+ *
  */
 
 import { CircleHelp } from 'lucide-react';

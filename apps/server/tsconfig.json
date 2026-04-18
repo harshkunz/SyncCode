@@ -14,12 +14,7 @@
       "@synccode/types/*": ["../../packages/types/*"]
     },
     "types": ["node", "jest"],
-    "lib": ["ESNext"],
+    "lib": ["ESNext"]
   },
-  "include": [
-    "src/**/*",
-    "tests/**/*",       
-    "jest.setup.ts",
-    "jest.config.ts"
-  ]
+  "include": ["src/**/*", "tests/**/*", "jest.setup.ts", "jest.config.ts"]
 }

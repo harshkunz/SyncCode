@@ -1,7 +1,7 @@
 /**
  * Create a style for a cursor.
  *
-*
+ *
  */
 
 /**

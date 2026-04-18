@@ -6,7 +6,7 @@
  * - Markdown syntax support
  * - Image and table insertion
  *
-*
+ *
  */
 
 'use client';

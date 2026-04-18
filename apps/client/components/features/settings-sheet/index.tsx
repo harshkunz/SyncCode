@@ -6,7 +6,7 @@
  * - GitHub connection
  * - Settings import/export
  *
-*
+ *
  */
 
 import {

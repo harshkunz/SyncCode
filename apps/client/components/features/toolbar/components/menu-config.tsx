@@ -5,7 +5,7 @@
  * - Icon imports
  * - Keyboard shortcut mapping
  *
-*
+ *
  */
 
 import {
@@ -363,7 +363,7 @@ export const createMenuConfig = (
           label: 'Manual',
           icon: <HelpCircle className="mr-2 size-4" />,
           action: 'manual'
-        },
+        }
       ]
     }
   ];

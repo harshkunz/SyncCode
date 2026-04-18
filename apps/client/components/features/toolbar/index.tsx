@@ -6,7 +6,7 @@
  * - Editor command access
  * - Dialog/sheet management
  *
-*
+ *
  */
 
 import { useEffect, useRef, type Dispatch, type SetStateAction } from 'react';
@@ -19,11 +19,17 @@ import { useMediaQuery } from '@/hooks/use-media-query';
 import { AboutDialog, type AboutDialogRef } from '@/components/features/about-dialog';
 import { LeaveDialog, type LeaveDialogRef } from '@/components/features/dialog-box/leave-dialog';
 import {
+  OpenPromptDialog,
+  type OpenPromptDialogRef
+} from '@/components/features/dialog-box/open-prompt-dialog';
+import {
   OpenFromGithubDialog,
   type OpenFromGithubDialogRef
 } from '@/components/features/open-from-github-dialog';
-import { OpenPromptDialog, type OpenPromptDialogRef } from '@/components/features/dialog-box/open-prompt-dialog';
-import { SaveToGithubDialog, type SaveToGithubDialogRef } from '@/components/features/save-to-github-dialog';
+import {
+  SaveToGithubDialog,
+  type SaveToGithubDialogRef
+} from '@/components/features/save-to-github-dialog';
 import { SettingsSheet, type SettingsSheetRef } from '@/components/features/settings-sheet';
 
 import { DesktopMenu } from './components/desktop-menu';
@@ -255,7 +261,7 @@ const Toolbar = ({
     toggleWebcamPanel: () => setShowWebcam(show => !show),
     toggleSandpackPanel: () => setShowLivePreview(show => !show),
     manual: () => {
-      window.open('', '_blank');    // Change
+      window.open('', '_blank'); // Change
     },
     about: () => aboutDialogRef.current?.openDialog()
   };

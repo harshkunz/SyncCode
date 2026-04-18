@@ -5,7 +5,7 @@
  * - Output formatting
  * - Socket messaging
  *
-*
+ *
  */
 
 import type { Dispatch, RefObject, SetStateAction } from 'react';

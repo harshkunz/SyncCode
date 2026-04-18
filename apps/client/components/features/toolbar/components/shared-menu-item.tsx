@@ -6,7 +6,7 @@
  * - Menu separators
  * - Keyboard shortcuts
  *
-*
+ *
  */
 
 import {
@@ -16,8 +16,8 @@ import {
   MenubarShortcut
 } from '@/components/ui/menubar';
 
-import type { MenuItem } from './menu-config';
 import type { ToolbarActions } from '../lib/types';
+import type { MenuItem } from './menu-config';
 
 interface SharedMenuItemProps {
   item: MenuItem | 'separator';

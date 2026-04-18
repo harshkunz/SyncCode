@@ -5,7 +5,7 @@
  * - Desktop/mobile specific props
  * - Menu action definitions
  *
-*
+ *
  */
 
 export interface MenuProps {

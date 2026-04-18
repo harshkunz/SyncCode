@@ -6,7 +6,7 @@
  * - Download/clear logs
  * - Welcome message
  *
-*
+ *
  */
 
 import { Dispatch, SetStateAction, useEffect, useRef } from 'react';

@@ -5,7 +5,7 @@
  * - Type constraints
  * - Value definitions
  *
-*
+ *
  */
 
 export type EditorOption = {

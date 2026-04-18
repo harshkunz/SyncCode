@@ -5,7 +5,7 @@
  * - Commit message handling
  * - Default values management
  *
-*
+ *
  */
 
 import { zodResolver } from '@hookform/resolvers/zod';

@@ -5,7 +5,7 @@
  * - Spinner indicator
  * - Accessible status message
  *
-*
+ *
  */
 
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
@@ -13,7 +13,7 @@ import { Spinner } from '@/components/shared/spinner';
 
 export const RedirectingCard = () => (
   <div
-    className="animate-fade-in w-full max-w-md backdrop-blur-sm text-sm"
+    className="animate-fade-in w-full max-w-md text-sm backdrop-blur-sm"
     role="status"
     aria-live="polite"
   >

@@ -5,7 +5,7 @@
  * - Viewport line visibility checks
  * - Cursor style handling
  *
-*
+ *
  */
 
 import type { RefObject } from 'react';

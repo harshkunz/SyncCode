@@ -6,7 +6,7 @@
  * - Preview image with loading state
  * - External links
  *
-*
+ *
  */
 
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useState } from 'react';
@@ -71,102 +71,74 @@ const AboutDialog = forwardRef<AboutDialogRef, AboutDialogProps>(({ forceDark = 
     setIsImgLoaded(false);
   }, [isDesktop]);
 
-// Desktop Modal
-if (isDesktop) {
+  // Desktop Modal
+  if (isDesktop) {
+    return (
+      <Dialog open={isOpen} onOpenChange={setIsOpen} aria-label="About syncCode">
+        <DialogContent
+          className={cn(
+            'mx-auto max-w-md rounded-2xl border border-white/20 bg-black/90 p-8 shadow-lg backdrop-blur-xl',
+            forceDark && 'dark'
+          )}
+        >
+          <DialogHeader className="pb-4 text-center">
+            <DialogTitle className="mb-2 text-2xl font-bold tracking-wide text-white">
+              {SITE_NAME}
+            </DialogTitle>
+          </DialogHeader>
+
+          <nav className="grid grid-cols-4 gap-4 py-4" aria-label="External links">
+            <ExternalLink forceDark={forceDark} />
+          </nav>
+
+          <DialogFooter className="mt-6 flex justify-center">
+            <DialogClose asChild>
+              <Button
+                variant="secondary"
+                className={`group relative flex w-1/2 items-center justify-center overflow-hidden rounded-full bg-gradient-to-r
+                  from-blue-700 to-purple-600 py-3 font-semibold text-white shadow-md transition-all duration-300
+                  hover:scale-105 hover:shadow-2xl active:scale-95`}
+              >
+                Close
+              </Button>
+            </DialogClose>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    );
+  }
+
+  // Mobile Drawer
   return (
-    <Dialog
-      open={isOpen}
-      onOpenChange={setIsOpen}
-      aria-label="About syncCode"
-    >
-      <DialogContent className={cn(
-        "max-w-md mx-auto p-8 rounded-2xl border border-white/20 shadow-lg backdrop-blur-xl bg-black/90",
-        forceDark && "dark"
-      )}>
-        <DialogHeader className="text-center pb-4">
-          <DialogTitle className="text-2xl font-bold text-white tracking-wide mb-2">
+    <Drawer open={isOpen} onOpenChange={setIsOpen} aria-label="About syncCode">
+      <DrawerContent className="mx-auto max-w-sm rounded-2xl border border-white/20 bg-black/95 p-6 shadow-lg backdrop-blur-xl">
+        <DrawerHeader className="pb-2 text-center">
+          <DrawerTitle className="mb-1 text-xl font-bold tracking-wide text-white">
             {SITE_NAME}
-          </DialogTitle>
-        </DialogHeader>
+          </DrawerTitle>
+        </DrawerHeader>
 
-        <nav className="grid grid-cols-4 gap-4 py-4" aria-label="External links">
-          <ExternalLink forceDark={forceDark} />
-        </nav>
+        <div className="px-3 py-4">
+          <nav className="grid grid-cols-2 gap-3" aria-label="External links">
+            <ExternalLink forceDark={forceDark} />
+          </nav>
+        </div>
 
-        <DialogFooter className="flex justify-center mt-6">
-          <DialogClose asChild>
+        <DrawerFooter className="flex justify-center pt-4">
+          <DrawerClose asChild>
             <Button
               variant="secondary"
-              className={`
-                w-1/2 py-3
-                rounded-full
-                bg-gradient-to-r from-blue-700 to-purple-600
-                text-white font-semibold
-                shadow-md
-                transition-all duration-300
-                hover:scale-105 hover:shadow-2xl
-                active:scale-95
-                flex items-center justify-center
-                relative overflow-hidden
-                group
-              `}
+              className={`group relative flex w-2/3 items-center justify-center overflow-hidden rounded-full bg-gradient-to-r
+                from-blue-700 to-purple-600 py-3 font-semibold text-white shadow-md transition-all duration-300
+                hover:scale-105 hover:shadow-2xl active:scale-95`}
             >
               Close
             </Button>
-          </DialogClose>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+          </DrawerClose>
+        </DrawerFooter>
+      </DrawerContent>
+    </Drawer>
   );
-}
-
-// Mobile Drawer
-return (
-  <Drawer
-    open={isOpen}
-    onOpenChange={setIsOpen}
-    aria-label="About syncCode"
-  >
-    <DrawerContent className="mx-auto max-w-sm p-6 rounded-2xl border border-white/20 shadow-lg backdrop-blur-xl bg-black/95">
-      <DrawerHeader className="text-center pb-2">
-        <DrawerTitle className="text-xl font-bold text-white tracking-wide mb-1">
-          {SITE_NAME}
-        </DrawerTitle>
-      </DrawerHeader>
-
-      <div className="px-3 py-4">
-        <nav className="grid grid-cols-2 gap-3" aria-label="External links">
-          <ExternalLink forceDark={forceDark} />
-        </nav>
-      </div>
-
-      <DrawerFooter className="flex justify-center pt-4">
-        <DrawerClose asChild>
-          <Button
-            variant="secondary"
-            className={`
-              w-2/3 py-3
-              rounded-full
-              bg-gradient-to-r from-blue-700 to-purple-600
-              text-white font-semibold
-              shadow-md
-              transition-all duration-300
-              hover:scale-105 hover:shadow-2xl
-              active:scale-95
-              flex items-center justify-center
-              relative overflow-hidden
-              group
-            `}
-          >
-            Close
-          </Button>
-        </DrawerClose>
-      </DrawerFooter>
-    </DrawerContent>
-  </Drawer>
-);
-
-
 });
 
 AboutDialog.displayName = 'OpenPromptDialog';

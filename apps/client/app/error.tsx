@@ -25,7 +25,6 @@ export default function Error({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
-
   const generateErrorReport = () => {
     const timestamp = new Date().toISOString();
     let errorMessage = `Error Details:
@@ -64,10 +63,10 @@ Stack: ${error.stack || 'No stack trace available'}`;
             </Link>
           </Button>
           <Button variant="default" asChild className="gap-2">
-            <a href="/">
+            <Link href="/">
               <Home className="size-4" />
               Return Home
-            </a>
+            </Link>
           </Button>
         </div>
       </Alert>

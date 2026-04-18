@@ -5,7 +5,7 @@
  * - Markdown content reading
  * - Socket-based sync
  *
-*
+ *
  */
 
 import type { RefObject } from 'react';

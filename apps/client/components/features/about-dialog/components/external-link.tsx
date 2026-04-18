@@ -5,7 +5,7 @@
  * - External URL handling
  * - Accessibility support
  *
-*
+ *
  */
 
 import Image from 'next/image';

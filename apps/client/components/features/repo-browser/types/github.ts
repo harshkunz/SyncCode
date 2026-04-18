@@ -6,7 +6,7 @@
  * - Content metadata
  * - Commit response
  *
-*
+ *
  */
 
 import { itemType } from './tree';

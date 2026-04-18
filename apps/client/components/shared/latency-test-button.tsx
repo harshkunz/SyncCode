@@ -34,7 +34,7 @@ const LatencyTestButton = () => {
           </Button>
         </TooltipTrigger>
         <TooltipContent side="top" className="mr-2">
-          <p className='text-xs'>Test Latency</p>
+          <p className="text-xs">Test Latency</p>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>

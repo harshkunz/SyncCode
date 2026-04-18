@@ -5,7 +5,7 @@
  * - Blurred backdrop
  * - Description message
  *
-*
+ *
  */
 
 import { memo } from 'react';

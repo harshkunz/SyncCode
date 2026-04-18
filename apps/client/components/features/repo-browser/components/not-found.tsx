@@ -5,7 +5,7 @@
  * - Query highlight
  * - Return to search button
  *
-*
+ *
  */
 
 import type { RefObject } from 'react';

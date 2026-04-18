@@ -6,7 +6,7 @@
  * - Animated scaling
  * - Device-specific interaction
  *
-*
+ *
  */
 
 import { isMobile } from 'react-device-detect';

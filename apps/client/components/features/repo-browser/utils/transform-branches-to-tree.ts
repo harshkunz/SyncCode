@@ -5,7 +5,7 @@
  * - Tree item icon mapping
  * - Type-safe conversion
  *
-*
+ *
  */
 
 import { GitBranch } from 'lucide-react';

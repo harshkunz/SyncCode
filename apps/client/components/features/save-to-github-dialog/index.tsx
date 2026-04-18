@@ -6,7 +6,7 @@
  * - Repository browser integration
  * - File commit handling
  *
-*
+ *
  */
 
 import {
@@ -49,9 +49,9 @@ import { RepoBrowser } from '@/components/features/repo-browser';
 import { itemType, type ExtendedTreeDataItem } from '@/components/features/repo-browser/types/tree';
 import { Spinner } from '@/components/shared/spinner';
 
+import { onSubmit } from './components/on-submit';
 import { useCommitForm } from './hooks/useCommitForm';
 import { getDisplayPath } from './utils/get-display-path';
-import { onSubmit } from './components/on-submit';
 
 interface SaveToGithubDialogProps {
   editor: monaco.editor.IStandaloneCodeEditor | null;

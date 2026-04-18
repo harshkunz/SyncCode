@@ -5,7 +5,7 @@
  * - Icon assignment
  * - Type-safe conversion
  *
-*
+ *
  */
 
 import { Folder } from 'lucide-react';

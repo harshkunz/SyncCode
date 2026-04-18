@@ -5,7 +5,7 @@
  * - Menu command handlers
  * - Error handling
  *
-*
+ *
  */
 
 import { type Monaco } from '@monaco-editor/react';

@@ -5,7 +5,7 @@
  * - Timestamp formatting
  * - Message type coloring
  *
-*
+ *
  */
 
 import { ExecutionResultType, type ExecutionResult } from '@synccode/types/terminal';

@@ -5,7 +5,7 @@
  * - Extended tree item interface
  * - Repository structure types
  *
-*
+ *
  */
 
 import type { TreeDataItem } from '@/components/shared/tree';

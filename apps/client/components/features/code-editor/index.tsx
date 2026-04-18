@@ -6,7 +6,7 @@
  * - Real-time sync
  * - Scroll synchronization
  *
-*
+ *
  */
 
 import { memo, useEffect, useRef, useState, type Dispatch, type SetStateAction } from 'react';
@@ -20,7 +20,7 @@ import type { Cursor, EditOp } from '@synccode/types/operation';
 import type { Scroll } from '@synccode/types/scroll';
 
 import { getSocket } from '@/lib/socket';
-import type { StatusBarCursorPosition } from '@/components/status-bar';
+import type { StatusBarCursorPosition } from '@/components/features/status-bar';
 
 import { LoadingCard } from './components/loading-card';
 import * as codeService from './service/code-service';

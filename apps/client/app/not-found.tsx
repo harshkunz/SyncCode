@@ -7,6 +7,8 @@
 
  */
 
+import Link from 'next/link';
+
 import { Home } from 'lucide-react';
 
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
@@ -23,10 +25,10 @@ export default function NotFound() {
         </AlertDescription>
         <div className="mt-6 flex justify-end">
           <Button variant="default" asChild className="gap-2">
-            <a href="/">
+            <Link href="/">
               <Home className="size-4" />
               Return Home
-            </a>
+            </Link>
           </Button>
         </div>
       </Alert>

@@ -5,7 +5,7 @@
  * - Room name validation
  * - Default values handling
  *
-*
+ *
  */
 
 import { zodResolver } from '@hookform/resolvers/zod';

@@ -6,7 +6,7 @@
  * - Room ID formatting
  * - Socket communications
  *
-*
+ *
  */
 
 import { ChangeEvent } from 'react';

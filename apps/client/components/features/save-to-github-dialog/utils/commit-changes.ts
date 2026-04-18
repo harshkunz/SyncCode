@@ -6,7 +6,7 @@
  * - Commit data formatting
  * - Error handling
  *
-*
+ *
  */
 
 import { CommitResponse } from '@/components/features/repo-browser/types/github';

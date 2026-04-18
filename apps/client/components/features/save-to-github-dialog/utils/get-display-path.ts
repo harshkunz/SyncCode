@@ -5,7 +5,7 @@
  * - Branch path handling
  * - Directory/file path handling
  *
-*
+ *
  */
 
 import { itemType, type ExtendedTreeDataItem } from '@/components/features/repo-browser/types/tree';

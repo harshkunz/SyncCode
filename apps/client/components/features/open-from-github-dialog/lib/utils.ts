@@ -5,7 +5,7 @@
  * - Tree data item type checking
  * - Path normalization
  *
-*
+ *
  */
 
 import { itemType, type ExtendedTreeDataItem } from '@/components/features/repo-browser/types/tree';

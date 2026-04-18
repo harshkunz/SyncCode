@@ -5,7 +5,7 @@
  * - Panel toggle actions
  * - Editor command access
  *
-*
+ *
  */
 
 import { useEffect, useRef } from 'react';
@@ -22,8 +22,8 @@ import {
   MenubarTrigger
 } from '@/components/ui/menubar';
 
-import { createMenuConfig } from './menu-config';
 import type { MenuProps } from '../lib/types';
+import { createMenuConfig } from './menu-config';
 import { SharedMenuItem } from './shared-menu-item';
 
 const MobileMenu = ({ modKey, actions, notepad, terminal, webcam, livePreview }: MenuProps) => {

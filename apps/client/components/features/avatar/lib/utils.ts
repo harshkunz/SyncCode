@@ -3,7 +3,7 @@
  * - Get initials from full name
  * - Format display name with "you" suffix
  *
-*
+ *
  */
 
 import type { User } from '@synccode/types/user';

@@ -5,7 +5,7 @@
  * - Animated content placeholders
  * - Responsive layout matching editor
  *
-*
+ *
  */
 
 import { Skeleton } from '@/components/ui/skeleton';

@@ -6,7 +6,7 @@
  * - Real-time setting updates
  * - Settings persistence
  *
-*
+ *
  */
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';

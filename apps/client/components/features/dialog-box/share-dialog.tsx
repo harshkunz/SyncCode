@@ -60,13 +60,13 @@ const RoomIdSection = ({ roomId }: { roomId: string }) => {
 
   return (
     <div className="grid w-full items-center gap-1.5">
-      <Label htmlFor="room-id" className="text-sm font-mono">
+      <Label htmlFor="room-id" className="font-mono text-sm">
         Room ID
       </Label>
       <div className="bg-secondary flex w-full items-center gap-2 rounded-md p-1 md:p-1">
         <code
           id="room-id"
-          className="flex-1 font-mono sm:text-sm md:text-sm mx-3"
+          className="mx-3 flex-1 font-mono sm:text-sm md:text-sm"
           data-testid="room-id-text"
         >
           {roomId}
@@ -107,13 +107,13 @@ const InviteLinkSection = ({ roomId }: { roomId: string }) => {
 
   return (
     <div className="grid w-full items-center gap-1.5">
-      <Label htmlFor="invite-link" className="text-sm font-mono">
+      <Label htmlFor="invite-link" className="font-mono text-sm">
         Invite Link
       </Label>
       <div className="bg-secondary flex w-full items-center gap-2 rounded-md p-2 md:p-1">
         <code
           id="invite-link"
-          className="flex-1 font-mono sm:text-sm md:text-sm mx-3"
+          className="mx-3 flex-1 font-mono sm:text-sm md:text-sm"
           data-testid="invite-link-text"
         >
           {`${window.location.origin}/room/${roomId}`}
@@ -151,7 +151,7 @@ const ShareDialog = forwardRef<ShareDialogRef, ShareDialogProps>(({ roomId }, re
   }));
 
   const content = (
-    <div className="flex flex-col gap-6 md:flex-row md:items-start md:gap-8 mt-2">
+    <div className="mt-2 flex flex-col gap-6 md:flex-row md:items-start md:gap-8">
       {/* QR Code Section */}
       <div className="flex shrink-0 justify-center md:sticky md:top-0" data-testid="qr-code">
         <QRCodeCanvas
@@ -177,18 +177,22 @@ const ShareDialog = forwardRef<ShareDialogRef, ShareDialogProps>(({ roomId }, re
       <Dialog open={isOpen} onOpenChange={setIsOpen} aria-label="Share room dialog">
         <DialogContent className="max-w-3xl">
           <DialogHeader>
-            <DialogTitle className='text-center font-mono mb-2'>Share Room</DialogTitle>
-            <DialogDescription className='text-center text-white font-mono text-sm '>
+            <DialogTitle className="mb-2 text-center font-mono">Share Room</DialogTitle>
+            <DialogDescription className="text-center font-mono text-sm text-white">
               Anyone with this Room ID or Invite Link can collaborate in this room.
             </DialogDescription>
-            <DialogDescription className='text-center text-white font-mono text-sm'>
+            <DialogDescription className="text-center font-mono text-sm text-white">
               Only share with people you trust.
             </DialogDescription>
           </DialogHeader>
           {content}
           <DialogFooter className="mt-1">
             <DialogClose asChild>
-              <Button className='font-mono p-2 text-sm' variant="secondary" aria-label="Close share dialog">
+              <Button
+                className="p-2 font-mono text-sm"
+                variant="secondary"
+                aria-label="Close share dialog"
+              >
                 Close
               </Button>
             </DialogClose>

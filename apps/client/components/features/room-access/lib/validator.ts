@@ -5,7 +5,7 @@
  * - Room ID format validation
  * - Type inference exports
  *
-*
+ *
  */
 
 import { z } from 'zod';

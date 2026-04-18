@@ -6,7 +6,7 @@
  * - Authentication handling
  * - Responsive dialog/drawer
  *
-*
+ *
  */
 
 import {

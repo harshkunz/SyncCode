@@ -24,7 +24,10 @@ import { getSocket } from '@/lib/socket';
 import { parseError } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Avatar } from '@/components/features/avatar';
-import { switchAudioDevice, switchVideoDevice } from '@/components/features/webcam-stream/utils/media';
+import {
+  switchAudioDevice,
+  switchVideoDevice
+} from '@/components/features/webcam-stream/utils/media';
 
 import { DeviceControls } from './components/device-controls';
 import { VideoControls } from './components/video-controls';

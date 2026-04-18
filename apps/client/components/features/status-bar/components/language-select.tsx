@@ -6,7 +6,7 @@
  * - Synchronized language state
  * - Mobile support
  *
-*
+ *
  */
 
 import { memo, useCallback, useEffect, useMemo, useState } from 'react';

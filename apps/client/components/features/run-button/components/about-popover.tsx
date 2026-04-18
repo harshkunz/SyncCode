@@ -5,7 +5,7 @@
  * - Accessible tooltip
  * - Animated icon button
  *
-*
+ *
  */
 
 import { Info } from 'lucide-react';

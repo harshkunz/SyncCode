@@ -5,7 +5,7 @@
  * - Toast notifications
  * - Success/error messaging
  *
-*
+ *
  */
 
 import { ExternalLink } from 'lucide-react';

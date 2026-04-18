@@ -6,7 +6,7 @@
  * - Execution time display
  * - Error output handling
  *
-*
+ *
  */
 
 import type { ExecutionResult } from '@synccode/types/terminal';

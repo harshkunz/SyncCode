@@ -5,7 +5,7 @@
  * - Follow mode support
  * - User-specific scroll syncing
  *
-*
+ *
  */
 
 import type { RefObject } from 'react';

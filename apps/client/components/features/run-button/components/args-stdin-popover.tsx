@@ -5,7 +5,7 @@
  * - Standard input handling
  * - Input validation
  *
-*
+ *
  */
 
 import { useState } from 'react';

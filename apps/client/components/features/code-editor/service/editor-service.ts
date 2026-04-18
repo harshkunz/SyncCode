@@ -6,33 +6,37 @@
  * - Event handling
  * - Socket integration
  *
-*
+ *
  */
 
 import type { Dispatch, RefObject, SetStateAction } from 'react';
 
 import type { Monaco } from '@monaco-editor/react';
 import type * as monaco from 'monaco-editor';
-import themeList from 'monaco-themes/themes/themelist.json';
 
 import { CodeServiceMsg, ScrollServiceMsg } from '@synccode/types/message';
 import type { Cursor, EditOp } from '@synccode/types/operation';
 
 import { EDITOR_SETTINGS_KEY } from '@/lib/constants';
+import { DEFAULT_THEMES, loadMonacoThemeData } from '@/lib/monaco-themes';
 import { storage } from '@/lib/services/storage';
 import { getSocket } from '@/lib/socket';
-import type { StatusBarCursorPosition } from '@/components/status-bar';
+import type { StatusBarCursorPosition } from '@/components/features/status-bar';
 
 /**
  * Handle the Monaco editor before mounting.
  * @param monaco Monaco instance.
  */
 export const handleBeforeMount = (monaco: Monaco): void => {
-  Object.entries(themeList).forEach(([key, value]) => {
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const themeData = require(`monaco-themes/themes/${value}.json`);
-    monaco.editor.defineTheme(key, themeData);
-  });
+  const savedTheme = localStorage.getItem('editorTheme');
+
+  if (savedTheme && !(savedTheme in DEFAULT_THEMES)) {
+    void loadMonacoThemeData(savedTheme).then(themeData => {
+      if (themeData) {
+        monaco.editor.defineTheme(savedTheme, themeData);
+      }
+    });
+  }
 };
 
 /**

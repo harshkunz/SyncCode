@@ -5,7 +5,7 @@
  * - Editor state management
  * - Change synchronization
  *
-*
+ *
  */
 
 import type { RefObject } from 'react';

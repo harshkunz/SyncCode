@@ -5,7 +5,7 @@
  * - Timestamped filenames
  * - Blob handling
  *
-*
+ *
  */
 
 import type { RefObject } from 'react';

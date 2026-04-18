@@ -6,7 +6,7 @@
  * - Loading states
  * - Error display
  *
-*
+ *
  */
 
 import { CirclePlus } from 'lucide-react';
@@ -49,21 +49,18 @@ export const CreateRoomSection = ({
         className="flex flex-col space-y-2 sm:space-y-3"
         noValidate
       >
-        <h1 id="create-room-heading" className="text-sm font-mono sm:text-lg text-center">
+        <h1 id="create-room-heading" className="text-center font-mono text-sm sm:text-lg">
           Create a Room
         </h1>
         <div className="flex flex-col space-y-3 pb-2" role="group" aria-labelledby={inputId}>
-          <Label htmlFor={inputId} className="text-sm font-mono sm:text-sm">
+          <Label htmlFor={inputId} className="font-mono text-sm sm:text-sm">
             Name
           </Label>
           <Input
             id={inputId}
             placeholder="Enter your name"
-            className="
-              font-mono text-sm sm:text-sm
-              focus-visible:ring-1 focus-visible:ring-[#8420FF] focus-visible:ring-offset-0
-              border border-white/30
-            "
+            className="border border-white/30 font-mono text-sm focus-visible:ring-1 focus-visible:ring-[#8420FF]
+              focus-visible:ring-offset-0 sm:text-sm"
             disabled={isDisabled}
             aria-required="true"
             aria-invalid={errors.name ? 'true' : 'false'}
@@ -80,32 +77,25 @@ export const CreateRoomSection = ({
           type="submit"
           disabled={isDisabled}
           aria-busy={isSubmitting}
-          className={`
-            w-4/3 mx-auto py-2
-            rounded-full font-mono
-            bg-gradient-to-r from-blue-700 to-purple-600
-            text-white text-xs
-            shadow-md
-            transition-all duration-300
-            hover:scale-105 hover:shadow-2xl
-            active:scale-95
-            disabled:opacity-60
-            flex items-center justify-center
-            relative overflow-hidden
-            mb-4
-            group
-          `}
+          className={`w-4/3 group relative mx-auto mb-4 flex items-center justify-center overflow-hidden rounded-full
+            bg-gradient-to-r from-blue-700 to-purple-600 py-2 font-mono text-xs text-white shadow-md
+            transition-all duration-300 hover:scale-105 hover:shadow-2xl active:scale-95 disabled:opacity-60`}
         >
-          <span className="absolute inset-0 rounded-full bg-white opacity-0 group-active:opacity-10 transition-all duration-300 pointer-events-none" />
+          <span
+            className="pointer-events-none absolute inset-0 rounded-full bg-white opacity-0 transition-all duration-300
+              group-active:opacity-10"
+          />
 
           {isSubmitting ? (
-            <Spinner className="mr-2 w-5 h-5 animate-spin transition-transform duration-300" />
+            <Spinner className="mr-2 h-5 w-5 animate-spin transition-transform duration-300" />
           ) : (
-            <CirclePlus className="mr-2 w-5 h-5 group-hover:rotate-90 transition-transform duration-500" aria-hidden="true" />
+            <CirclePlus
+              className="mr-2 h-5 w-5 transition-transform duration-500 group-hover:rotate-90"
+              aria-hidden="true"
+            />
           )}
           {isSubmitting ? 'Creating...' : 'Create Room _'}
         </Button>
-
       </form>
     </section>
   );

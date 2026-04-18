@@ -60,12 +60,18 @@ const LeaveDialog = forwardRef<LeaveDialogRef>((props, ref) => {
       <Dialog open={isOpen} onOpenChange={setIsOpen} aria-label="Leave room dialog">
         <DialogContent>
           <DialogHeader>
-            <DialogTitle className='text-sm font-mono mb-1'>{DEFAULT_TITLE}</DialogTitle>
-            <DialogDescription className='font-mono text-xs'>{DEFAULT_DESCRIPTION}</DialogDescription>
+            <DialogTitle className="mb-1 font-mono text-sm">{DEFAULT_TITLE}</DialogTitle>
+            <DialogDescription className="font-mono text-xs">
+              {DEFAULT_DESCRIPTION}
+            </DialogDescription>
           </DialogHeader>
           <DialogFooter>
             <DialogClose asChild>
-              <Button className='font-mono p-2 text-sm' variant="secondary" aria-label="Cancel leaving room">
+              <Button
+                className="p-2 font-mono text-sm"
+                variant="secondary"
+                aria-label="Cancel leaving room"
+              >
                 Close
               </Button>
             </DialogClose>
@@ -73,7 +79,7 @@ const LeaveDialog = forwardRef<LeaveDialogRef>((props, ref) => {
               variant="destructive"
               onClick={handleLeaveRoom}
               aria-label="Confirm leaving room"
-              className='font-mono p-2 text-sm'
+              className="p-2 font-mono text-sm"
             >
               Leave
             </Button>

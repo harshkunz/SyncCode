@@ -6,7 +6,7 @@
  * - Theme-aware rendering
  * - Error handling
  *
-*
+ *
  */
 
 import { SandpackLayout, SandpackPreview, SandpackProvider } from '@codesandbox/sandpack-react';

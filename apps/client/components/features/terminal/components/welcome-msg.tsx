@@ -5,13 +5,13 @@
  * - Usage instructions
  * - Terminal formatting
  *
-*
+ *
  */
 
 import Image from 'next/image';
 
 const WelcomeMsg = () => (
-  <div className="mb-4 ">
+  <div className="mb-4">
     <div className="flex items-center gap-2 text-sm">
       <Image
         src="/images/icon.svg"
@@ -21,9 +21,9 @@ const WelcomeMsg = () => (
         height="16"
         priority
       />
-      <span className=''>Terminal</span>
+      <span className="">Terminal</span>
     </div>
-    <div className='pt-4 text-xs text-center'>
+    <div className="pt-4 text-center text-xs">
       Select language via the dropdown in the bottom right corner.
     </div>
   </div>

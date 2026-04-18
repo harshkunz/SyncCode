@@ -5,17 +5,17 @@
  * - Theme preview with CSS variable updates
  * - Theme persistence
  *
-*
+ *
  */
 
 import { useEffect, useState } from 'react';
 
 import type { Monaco } from '@monaco-editor/react';
 import { Check, ChevronsUpDown } from 'lucide-react';
-import themeList from 'monaco-themes/themes/themelist.json';
 import { useTheme } from 'next-themes';
 
 import { applyEditorTheme, initEditorTheme, registerMonaco } from '@/lib/init-editor-theme';
+import { DEFAULT_THEMES, MONACO_THEME_LIST } from '@/lib/monaco-themes';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import {
@@ -32,31 +32,6 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 interface EditorThemeSettingsProps {
   monaco: Monaco;
 }
-
-const DEFAULT_THEMES = {
-  'vs-dark': {
-    name: 'Dark (Visual Studio)',
-    variables: {
-      '--toolbar-bg-secondary': '#3c3c3c',
-      '--panel-background': '#1e1e1e',
-      '--toolbar-foreground': '#fff',
-      '--toolbar-bg-primary': '#2678ca',
-      '--toolbar-accent': '#2678ca',
-      '--panel-text-accent': '#fff'
-    }
-  },
-  light: {
-    name: 'Light (Visual Studio)',
-    variables: {
-      '--toolbar-bg-secondary': '#dddddd',
-      '--panel-background': '#fffffe',
-      '--toolbar-foreground': '#000',
-      '--toolbar-bg-primary': '#2678ca',
-      '--toolbar-accent': '#2678ca',
-      '--panel-text-accent': '#fff'
-    }
-  }
-};
 
 // Function to detect system color preference
 const getSystemTheme = (): 'vs-dark' | 'light' => {
@@ -88,7 +63,7 @@ const EditorThemeSettings = ({ monaco }: EditorThemeSettingsProps) => {
   // Run the init function once and sync with next-themes
   useEffect(() => {
     // Initialize editor theme
-    initEditorTheme();
+    void initEditorTheme();
 
     // Load saved theme to update the UI
     const savedTheme = localStorage.getItem('editorTheme');
@@ -101,15 +76,17 @@ const EditorThemeSettings = ({ monaco }: EditorThemeSettingsProps) => {
       } else if (savedTheme in DEFAULT_THEMES) {
         setTheme('light');
       } else {
-        try {
-          // eslint-disable-next-line @typescript-eslint/no-require-imports
-          const themeData = require(
-            `monaco-themes/themes/${themeList[savedTheme as keyof typeof themeList]}.json`
-          );
-          setTheme(themeData.base === 'vs-dark' ? 'dark' : 'light');
-        } catch (error) {
-          console.error('Failed to sync theme:', error);
-        }
+        void import('@/lib/monaco-themes').then(({ loadMonacoThemeData }) =>
+          loadMonacoThemeData(savedTheme)
+            .then(themeData => {
+              if (themeData) {
+                setTheme(themeData.base === 'vs-dark' ? 'dark' : 'light');
+              }
+            })
+            .catch(error => {
+              console.error('Failed to sync theme:', error);
+            })
+        );
       }
     } else {
       // No saved theme, use system preference
@@ -123,17 +100,17 @@ const EditorThemeSettings = ({ monaco }: EditorThemeSettingsProps) => {
     setEditorTheme(key);
     setOpen(false);
 
-    // Apply the theme and get the appropriate next-theme value
-    const nextTheme = applyEditorTheme(key, value);
-
-    // Update next-themes
-    setTheme(nextTheme);
+    void applyEditorTheme(key, value).then(nextTheme => {
+      setTheme(nextTheme);
+    });
   };
 
   // Combine default and custom themes with explicit typing
   const themes = Object.entries({
     ...DEFAULT_THEMES,
-    ...Object.fromEntries(Object.entries(themeList).map(([key, value]) => [key, { name: value }]))
+    ...Object.fromEntries(
+      Object.entries(MONACO_THEME_LIST).map(([key, value]) => [key, { name: value }])
+    )
   });
 
   return (

@@ -5,7 +5,7 @@
  * - Loading state management
  * - Immutable state updates
  *
-*
+ *
  */
 
 import type { Dispatch, SetStateAction } from 'react';

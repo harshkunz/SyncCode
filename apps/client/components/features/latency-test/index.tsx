@@ -6,7 +6,7 @@
  * - Statistical analysis
  * - Results visualization
  *
-*
+ *
  */
 
 'use client';
@@ -140,42 +140,38 @@ const LatencyTest = () => {
   const socketStats = results.length ? calculateStats(results.map(r => r.socket)) : null;
 
   return (
-    <div className="flex justify-center items-center min-h-screen w-full">
-      <Card className="w-full max-w-3xl bg-black/10 backdrop-blur-xl 
-        rounded-3xl border border-white/10 shadow-2xl p-2 sm:p-4">
+    <div className="flex min-h-screen w-full items-center justify-center">
+      <Card
+        className="w-full max-w-3xl rounded-3xl border border-white/10 bg-black/10 p-2 shadow-2xl backdrop-blur-xl
+          sm:p-4"
+      >
         {/* Back Button */}
         <Button
           variant="link"
           asChild
-          className="
-            flex items-center px-0 gap-1
-            font-medium text-transparent bg-clip-text
-            bg-gradient-to-r from-blue-400 via-purple-400 to-green-400
-            hover:scale-105 transition-all duration-300
-          "
+          className="flex items-center gap-1 bg-gradient-to-r from-blue-400 via-purple-400 to-green-400 bg-clip-text px-0
+            font-medium text-transparent transition-all duration-300 hover:scale-105"
         >
           <a href={BASE_CLIENT_URL}>
-            <ArrowLeft className="w-5 h-5 text-purple-500" />
+            <ArrowLeft className="h-5 w-5 text-purple-500" />
             <span>Go back</span>
           </a>
         </Button>
 
         {/* Header */}
-        <CardHeader className="p-4 mt-[-16px]">
-          <CardTitle className="text-sm sm:text-lg text-center font-mono">
+        <CardHeader className="mt-[-16px] p-4">
+          <CardTitle className="text-center font-mono text-sm sm:text-lg">
             Server Latency Test
           </CardTitle>
         </CardHeader>
 
         <CardContent>
-          <div className="space-y-6 mb-[-8px] flex flex-col items-center">
-
+          <div className="mb-[-8px] flex flex-col items-center space-y-6">
             {/* Input + Action */}
-            <div className="w-full flex justify-center items-end gap-4">
-
+            <div className="flex w-full items-end justify-center gap-4">
               {/* Input */}
               <div className="space-y-1.5 pl-12 sm:pl-32">
-                <Label htmlFor="iterations" className="text-sm font-mono sm:text-sm">
+                <Label htmlFor="iterations" className="font-mono text-sm sm:text-sm">
                   Number of Tests
                 </Label>
                 <Input
@@ -185,11 +181,8 @@ const LatencyTest = () => {
                   max={MAX_ITERATIONS}
                   value={iterations}
                   onChange={handleIterationChange}
-                  className=" w-4/3 mx-auto
-                    font-mono text-sm sm:text-sm
-                    focus-visible:ring-1 focus-visible:ring-[#8420FF] focus-visible:ring-offset-0
-                    border border-white/30 rounded-full
-                  "
+                  className="w-4/3 mx-auto rounded-full border border-white/30 font-mono text-sm focus-visible:ring-1
+                    focus-visible:ring-[#8420FF] focus-visible:ring-offset-0 sm:text-sm"
                   disabled={isTesting}
                 />
               </div>
@@ -198,54 +191,39 @@ const LatencyTest = () => {
               <Button
                 onClick={measureLatency}
                 disabled={isTesting || isConnecting}
-                className="
-                  w-4/3 mx-auto py-2
-                  rounded-full font-mono
-                  bg-gradient-to-r from-blue-700 to-purple-600
-                  text-xs
-                  shadow-md
-                  transition-all duration-300
-                  hover:scale-105 hover:shadow-2xl
-                  active:scale-95
-                  disabled:opacity-60
-                  flex items-center justify-center
-                  relative overflow-hidden
-                  
-                "
+                className="w-4/3 relative mx-auto flex items-center justify-center overflow-hidden rounded-full
+                  bg-gradient-to-r from-blue-700 to-purple-600 py-2 font-mono text-xs shadow-md transition-all
+                  duration-300 hover:scale-105 hover:shadow-2xl active:scale-95 disabled:opacity-60"
               >
-                <span className="absolute inset-0 rounded-full bg-white opacity-0 
-                  group-active:opacity-10 transition-all duration-300 pointer-events-none" />
+                <span
+                  className="pointer-events-none absolute inset-0 rounded-full bg-white opacity-0 transition-all duration-300
+                    group-active:opacity-10"
+                />
 
                 {isConnecting ? (
                   <>
-                    <Spinner className="w-5 h-5 mr-2 animate-spin" />
+                    <Spinner className="mr-2 h-5 w-5 animate-spin" />
                     Connecting...
                   </>
                 ) : isTesting ? (
                   <>
-                    <Spinner className="w-5 h-5 mr-2 animate-spin" />
+                    <Spinner className="mr-2 h-5 w-5 animate-spin" />
                     Testing ({testCount}/{iterations})
                   </>
                 ) : (
-                  "Start Tests"
+                  'Start Tests'
                 )}
               </Button>
             </div>
 
             {/* Error */}
-            {error && (
-              <p className="text-red-500 text-xs">{error}</p>
-            )}
+            {error && <p className="text-xs text-red-500">{error}</p>}
 
             {/* Tables */}
             {results.length > 0 && (
               <div className="space-y-6">
-
                 {/* Results Table */}
-                <Table className="
-                  bg-white/5 text-sm rounded-2xl overflow-hidden 
-                  backdrop-blur-lg border border-white/10 text-center
-                ">
+                <Table className="overflow-hidden rounded-2xl border border-white/10 bg-white/5 text-center text-sm backdrop-blur-lg">
                   <TableHeader>
                     <TableRow>
                       <TableHead className="text-center">Test #</TableHead>
@@ -266,12 +244,12 @@ const LatencyTest = () => {
 
                 {/* Stats Table */}
                 {httpStats && socketStats && (
-                  <Table className="
-                    bg-white/5 text-sm rounded-2xl overflow-hidden 
-                    backdrop-blur-lg border border-white/10 text-center table-fixed w-full
-                  ">
-                    <TableHeader >
-                      <TableRow className=''>
+                  <Table
+                    className="w-full table-fixed overflow-hidden rounded-2xl border border-white/10 bg-white/5 text-center text-sm
+                      backdrop-blur-lg"
+                  >
+                    <TableHeader>
+                      <TableRow className="">
                         <TableHead className="text-center">Statistics (ms)</TableHead>
                         <TableHead className="text-center">HTTP</TableHead>
                         <TableHead className="text-center">Socket</TableHead>
@@ -308,7 +286,6 @@ const LatencyTest = () => {
                 )}
               </div>
             )}
-
           </div>
         </CardContent>
       </Card>

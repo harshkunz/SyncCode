@@ -4,7 +4,7 @@
  * - File name field
  * - Commit message field
  *
-*
+ *
  */
 
 export type CommitForm = {

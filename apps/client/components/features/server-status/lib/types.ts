@@ -5,7 +5,7 @@
  * - API response types
  * - Status attributes
  *
-*
+ *
  */
 
 export type ServiceStatus = {

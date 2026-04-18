@@ -4,7 +4,7 @@
  * - Test result data structure
  * - Statistical calculation types
  *
-*
+ *
  */
 
 export type TestResult = {
