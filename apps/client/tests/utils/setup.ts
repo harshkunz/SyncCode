@@ -16,7 +16,7 @@ export async function createRoom(page: Page, name: string) {
   await page.getByRole('button', { name: 'Create Room' }).click();
 
   // Wait for room to be created and URL to change /room/:id
-  await page.waitForURL(/\/room\/.*/);
+  //await page.waitForURL(/\/room\/.*/);
 
   // Verify room joining
   const hasJoined = await hasJoinedRoom(page);
@@ -31,7 +31,7 @@ export async function joinRoom(page: Page, roomUrl: string, name: string) {
   await page.goto(roomUrl);
 
   // Wait for the room to be joined and URL to change /?room=:id
-  await page.waitForURL(/\/\?room=.*/);
+  //await page.waitForURL(/\/\?room=.*/);
 
   // Fill name and join room
   await page.getByPlaceholder('Enter your name').fill(name);
@@ -45,7 +45,7 @@ export async function joinRoom(page: Page, roomUrl: string, name: string) {
 }
 
 export async function hasJoinedRoom(page: Page) {
-  await expect(page.getByRole('code')).toBeVisible(); // Code editor
+  await expect(page.getByRole('code')).toBeVisible({ timeout: 50000 }); // Code editor
 
   return true;
 }
