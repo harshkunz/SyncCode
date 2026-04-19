@@ -12,7 +12,7 @@
   <img src="./docs/read/editor.png" alt="_picture" height="400">
 </p>
 
-### Feature
+## Feature
 
 #### 1. Collaborative editor:
 Collaborate on code with live cursor sharing, synchronized highlighting, and follow mode to enhance team productivity and visibility.
@@ -51,8 +51,212 @@ Seamlessly save and access your code directly from GitHub repositories, enabling
   <img src="./docs/read/github.png" alt="_picture" height="400">
 </p>
 
+## System Design
 
-### ☐ Project Structure
+
+```mermaid
+flowchart TD
+
+    A[System Design Highlights]
+
+    A --> B[Real-Time First]
+    B --> B1[WebSocket-based architecture]
+    B --> B2[Instant updates across all clients]
+
+    A --> C[Scalable Structure]
+    C --> C1[Modular services]
+    C --> C2[Clear separation of concerns]
+
+    A --> D[Low Latency]
+    D --> D1[In-memory room state]
+    D --> D2[Operation-based updates]
+
+    A --> E[Efficient Networking]
+    E --> E1[No redundant full-state sync]
+    E --> E2[Only delta updates transmitted]
+
+    A --> F[Fault Tolerance]
+    F --> F1[Graceful disconnect handling]
+    F --> F2[Room cleanup logic]
+```
+
+## Architecture
+
+#### 1. Connection Layer
+
+When a user opens the application:
+
+- A singleton socket connection is initialized from the client (`socket.ts`)
+- Ensures:
+  - Only one active connection per tab
+  - Efficient event communication
+  - Persistent connection throughout the session
+
+#### 2. Room Lifecycle
+
+Users can:
+
+- Create a new room `CREATE`
+- Join an existing room `JOIN`
+
+Backend Flow:
+
+1. Client emits event with `roomId`
+2. Server:
+   - Validates room existence (for JOIN)
+   - Creates room (for CREATE)
+   - Assigns a custom unique user ID
+   - Stores user in room state
+
+Why Custom User ID?
+
+- Tracks users independent of socket ID  
+- Helps in reconnection  
+- Maintains identity consistency  
+
+Handled In:
+
+- `room-service.ts`
+
+#### 3. Initial Synchronization
+After joining, the client has no state → requests full sync.
+
+Events Emitted:
+
+- `SYNC_USERS`
+- `SYNC_CODE`
+- `SYNC_MD`
+
+Server Responds With:
+
+- Current users in room  
+- Latest code snapshot  
+- Markdown content  
+- Execution / terminal state  
+
+Ensures:
+- New users instantly match room state  
+- No inconsistencies across clients  
+
+#### 4. Code Collaboration
+
+Core feature of the system.
+
+Flow:
+
+1. User types in Monaco Editor  
+2. Editor emits `UPDATE_CODE` (operation-based changes)  
+3. Server:
+   - Applies operation to in-memory room state  
+   - Broadcasts update to other users  
+4. Clients:
+   - Apply update to editor model  
+   - Avoid re-emitting (prevents loops)  
+
+Key Design:
+
+- Operation-based updates → efficient  
+- In-memory storage → low latency  
+- Broadcast model → real-time sync  
+
+Handled In:
+
+- `editor-service.ts`
+- `code-service.ts`
+
+
+#### 5. Presence & Telemetry System
+
+Tracks real-time user activity.
+
+Includes:
+
+- Cursor position  
+- Mouse movement  
+- Scroll position  
+
+Flow:
+
+1. Client emits frequent updates  
+2. Server broadcasts to room  
+3. Other users visualize activity  
+
+Design Notes:
+
+- Lightweight events (no persistence)  
+- High-frequency → optimized for speed  
+
+Handled Services:
+
+- `user-service.ts`
+- `pointer-service.ts`
+- `scroll-service.ts`
+
+#### 6. Code Execution Pipeline
+
+Allows users to run code collaboratively.
+
+Flow:
+
+1. User clicks **Run** 
+2. Client:
+   - Emits `EXEC true`  
+   - Calls `/api/execute`  
+3. Backend:
+   - Sends code to execution service  
+   - Receives output  
+4. Server:
+   - Emits `UPDATE_TERM` (output)  
+   - Emits `EXEC false`  
+
+Output is synced across all users.
+
+Execution Provider:
+
+- Uses **Piston**
+- Supports multiple languages  
+- Stateless HTTP execution  
+
+
+#### 7. WebRTC Communication
+
+Peer-to-peer communication using WebRTC.
+
+Flow:
+
+1. User ready → `STREAM_READY`  
+2. Peers exchange signaling → `SIGNAL`  
+3. Server acts only as relay  
+
+Media flows directly between peers (P2P).
+
+Handled In:
+
+- `webrtc-service.ts`
+
+
+#### 8. Cleanup & Resource
+
+When a user disconnects:
+
+Server Actions:
+
+- Remove user from room  
+- Update remaining users  
+- Broadcast updated user list  
+
+If Room is Empty:
+
+- Delete room data  
+- Free memory  
+
+## E2E Run
+
+```mermaid
+
+```
+
+## Structure
 ``` Java
     SyncCode
     ├── apps/                    # Application packages for frontend and backend services
@@ -78,7 +282,7 @@ Seamlessly save and access your code directly from GitHub repositories, enabling
 
 ```
 
-### ☐ Installation
+## Installation
 1. **Prerequisites**
 
 - [Node.js](https://nodejs.org/en/) (v18 or higher)
@@ -135,7 +339,7 @@ The application will be available at:
 - Backend: http://localhost:3001
 
 
-### ☐ Test
+## Test
 Run all frontend E2E tests from the root or client workspace:
 
 ```bash
@@ -159,7 +363,7 @@ Run backend tests from the root or server workspace:
     pnpm --filter server test:server
 ```
 
-### ☐ Deployment
+## Deployment
 Build the entire project with Turborepo caching:
 ```bash
     pnpm build
@@ -192,7 +396,7 @@ Linting and Formatting
     pnpm --filter server test:socket
 ```
 
-### ☐ Contributing
+## Contributing
 Open to contributions!
 - Fork the repository  
 - Create a new branch (`git checkout -b feature-name`)  
