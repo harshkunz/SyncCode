@@ -53,7 +53,6 @@ Seamlessly save and access your code directly from GitHub repositories, enabling
 
 ## System Design
 
-
 ```mermaid
 flowchart TD
 
@@ -79,6 +78,110 @@ flowchart TD
     F --> F1[Graceful disconnect handling]
     F --> F2[Room cleanup logic]
 ```
+
+## Toolkit
+
+#### Frontend
+- **Framework:** Next.js, TypeScript
+- **Styling:** Tailwind CSS, shadcn/ui
+- **Editor:** Monaco Editor, Sandpack (live preview)
+- **Collaboration:** Socket.IO Client, simple-peer (WebRTC)
+- **Notepad:** MDXEditor
+- **Forms:** React Hook Form + Zod
+
+#### Backend
+- **Runtime:** Node.js, TypeScript
+- **Real-time:** Socket.IO (WebSockets.js server)
+
+#### Testing
+- **E2E:** Playwright
+- **Unit:** Jest
+- **Security:** CodeQL
+
+#### Code Quality
+- **Linting:** ESLint
+- **Formatting:** Prettier
+- **Git Hooks:** Husky
+- **Commit Linting:** commitlint
+
+#### Build & DevOps
+- **Monorepo:** Turborepo
+- **CI/CD:** GitHub Actions
+- **Deployment:** Vercel (frontend), Render (backend)
+
+#### Monitoring & Analytics
+- **Error Tracking:** Sentry
+- **Web Analytics:** Vercel Analytics, Cloudflare Web Analytics
+- **Uptime & Status:** Better Stack
+
+#### External Services
+- **Code Execution:** Piston
+- **Repository Management:** GitHub REST API
+
+## e2e Run
+
+```mermaid
+flowchart TD
+
+    A[User Opens App] --> B[Socket Connection Initialized]
+
+    B --> C{Create or Join Room}
+
+    C -->|CREATE| D[Create Room]
+    C -->|JOIN| E[Validate & Join Room]
+
+    D --> F[Assign Custom User ID]
+    E --> F
+
+    F --> G[Initial Sync Request]
+
+    G --> G1[SYNC_USERS]
+    G --> G2[SYNC_CODE]
+    G --> G3[SYNC_MD]
+
+    G1 --> H[Server Sends Room Users]
+    G2 --> H2[Server Sends Code State]
+    G3 --> H3[Server Sends Markdown]
+
+    H --> I[Workspace Ready]
+    H2 --> I
+    H3 --> I
+
+    I --> J{User Actions}
+
+    %% Code Collaboration
+    J -->|Edit Code| K[Emit UPDATE_CODE]
+    K --> L[Server Updates Room State]
+    L --> M[Broadcast to Other Users]
+    M --> N[Apply Changes in Editors]
+
+    %% Presence
+    J -->|Cursor / Pointer / Scroll| O[Emit Presence Events]
+    O --> P[Broadcast to Room]
+    P --> Q[Update UI for All Users]
+
+    %% Code Execution
+    J -->|Run Code| R[Emit EXEC true]
+    R --> S[Call /api/execute]
+    S --> T[Execute via External API]
+    T --> U[Emit UPDATE_TERM]
+    U --> V[Broadcast Output]
+    V --> W[Emit EXEC false]
+
+    %% WebRTC
+    J -->|Video/Audio| X[Emit STREAM_READY]
+    X --> Y[Signal Exchange]
+    Y --> Z[Peer-to-Peer Connection]
+
+    %% Cleanup
+    I --> AA{Leave / Disconnect}
+    AA --> AB[Remove User from Room]
+    AB --> AC[Update User List]
+    AC --> AD{Room Empty?}
+    AD -->|Yes| AE[Delete Room State]
+    AD -->|No| AF[Continue Session]
+```
+
 
 ## Architecture
 
@@ -249,12 +352,6 @@ If Room is Empty:
 
 - Delete room data  
 - Free memory  
-
-## E2E Run
-
-```mermaid
-
-```
 
 ## Structure
 ``` Java
