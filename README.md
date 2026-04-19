@@ -1,30 +1,56 @@
-## ☐ Toolkit
+<h3 align="center">SyncCode</h3>
 
-| Category | Subcategory | Tools / Technologies |
-|----------|------------|---------------------|
-| **Frontend** | Framework | Next.js, TypeScript |
-|  | Styling | Tailwind CSS, shadcn/ui |
-|  | Editor | Monaco Editor, Sandpack (live preview) |
-|  | Collaboration | Socket.IO Client, simple-peer (WebRTC) |
-|  | Notepad | MDXEditor |
-|  | Forms | React Hook Form + Zod |
-| **Backend** | Runtime | Node.js, TypeScript |
-|  | Real-time | Socket.IO (WebSockets.js server) |
-| **Testing** | E2E | Playwright |
-|  | Unit | Jest |
-|  | Security | CodeQL |
-| **Code Quality** | Linting | ESLint |
-|  | Formatting | Prettier |
-|  | Git Hooks | Husky |
-|  | Commit Linting | commitlint |
-| **Build & DevOps** | Monorepo | Turborepo |
-|  | CI/CD | GitHub Actions |
-|  | Deployment | Vercel (frontend), Render (backend) |
-| **Monitoring & Analytics** | Error Tracking | Sentry |
-|  | Web Analytics | Vercel Analytics, Cloudflare Web Analytics |
-|  | Uptime & Status | Better Stack |
-| **External Services** | Code Execution | Piston |
-|  | Repository Management | GitHub REST API |
+<p align="center">
+  <img src="./docs/images/icon.svg" alt="_picture" height="50">
+</p>
+
+<p align="center">
+  SyncCode is a collaborative coding platform with real-time video integration, enabling seamless teamwork, code sharing, and remote pair programming.
+</p>
+
+<p align="center">
+  <img src="./docs/read/editor.png" alt="_picture" height="400">
+</p>
+
+### Feature
+
+#### 1. Collaborative editor:
+Collaborate on code with live cursor sharing, synchronized highlighting, and follow mode to enhance team productivity and visibility.
+<p align="center">
+  <img src="./docs/read/collaborate.png" alt="_picture" height="400">
+</p>
+
+#### 2. Shared terminal:
+
+Execute code and view results in real time, supporting over 70+ programming languages for versatile development workflows.
+<p align="center">
+  <img src="./docs/read/terminal.png" alt="_picture" height="400">
+</p>
+
+#### 3. Live preview:
+Instantly preview UI changes with built-in support for popular libraries such as Tailwind CSS and others, streamlining frontend development.
+<p align="center">
+  <img src="./docs/read/live.png" alt="_picture" height="400">
+</p>
+
+#### 4. Shared notepad:
+Take collaborative notes in real time with rich text and Markdown support, ideal for brainstorming and documentation.
+<p align="center">
+  <img src="./docs/read/notepad.png" alt="_picture" height="400">
+</p>
+
+#### 5. Video & voice:
+Communicate with your team using integrated video and voice chat, ensuring smooth coordination during collaborative sessions.
+<p align="center">
+  <img src="./docs/read/video-voice-chat.png" alt="_picture" height="400">
+</p>
+
+#### 6. Github connect:
+Seamlessly save and access your code directly from GitHub repositories, enabling efficient version control and project management.
+<p align="center">
+  <img src="./docs/read/github.png" alt="_picture" height="400">
+</p>
+
 
 ### ☐ Project Structure
 ``` Java
