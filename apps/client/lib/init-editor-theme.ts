@@ -17,6 +17,10 @@ import {
   type MonacoThemeDefinition
 } from '@/lib/monaco-themes';
 
+const getMonacoThemeId = (themeKey: string): string => {
+  return themeKey === 'light' ? 'vs' : themeKey;
+};
+
 const setCSSVariables = (variables: Record<string, string>) => {
   if (typeof document === 'undefined') return; // Check for SSR
 
@@ -68,7 +72,7 @@ export const registerMonaco = (monaco: Monaco) => {
   const savedTheme =
     typeof localStorage !== 'undefined' ? localStorage.getItem('editorTheme') : null;
   if (savedTheme && savedTheme in DEFAULT_THEMES) {
-    globalMonaco.editor.setTheme(savedTheme);
+    globalMonaco.editor.setTheme(getMonacoThemeId(savedTheme));
     return;
   }
 
@@ -90,7 +94,7 @@ export const registerMonaco = (monaco: Monaco) => {
     window.matchMedia &&
     window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-  globalMonaco.editor.setTheme(systemPrefersDark ? 'vs-dark' : 'light');
+  globalMonaco.editor.setTheme(systemPrefersDark ? 'vs-dark' : 'vs');
 };
 
 // Function to check system preference for dark mode
@@ -142,7 +146,7 @@ export const initEditorTheme = async () => {
     const theme =
       localStorage.getItem('editorTheme') ||
       (getSystemPreference() === 'dark' ? 'vs-dark' : 'light');
-    globalMonaco.editor.setTheme(theme);
+    globalMonaco.editor.setTheme(getMonacoThemeId(theme));
   }
 };
 
@@ -155,17 +159,17 @@ if (typeof window !== 'undefined') {
 }
 
 // Export a utility function that components can use to apply a theme
-export const applyEditorTheme = async (key: string, value: string) => {
+export const applyEditorTheme = async (key: string) => {
   localStorage.setItem('editorTheme', key);
 
   if (key in DEFAULT_THEMES) {
     applyDefaultTheme(key as keyof typeof DEFAULT_THEMES);
-    globalMonaco?.editor.setTheme(key);
+    globalMonaco?.editor.setTheme(getMonacoThemeId(key));
     return key === 'vs-dark' ? 'dark' : 'light';
   }
 
   try {
-    const themeData = await loadMonacoThemeData(value);
+    const themeData = await loadMonacoThemeData(key);
 
     if (!themeData) {
       globalMonaco?.editor.setTheme('vs-dark');

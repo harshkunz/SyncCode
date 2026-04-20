@@ -34,12 +34,12 @@ interface EditorThemeSettingsProps {
 }
 
 // Function to detect system color preference
-const getSystemTheme = (): 'vs-dark' | 'light' => {
+const getSystemTheme = (): 'vs-dark' | 'vs' => {
   if (typeof window === 'undefined') return 'vs-dark'; // Default for SSR
 
   return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
     ? 'vs-dark'
-    : 'light';
+    : 'vs';
 };
 
 const EditorThemeSettings = ({ monaco }: EditorThemeSettingsProps) => {
@@ -96,11 +96,11 @@ const EditorThemeSettings = ({ monaco }: EditorThemeSettingsProps) => {
     }
   }, [setTheme]);
 
-  const handleThemeChange = (key: string, value: string) => {
+  const handleThemeChange = (key: string) => {
     setEditorTheme(key);
     setOpen(false);
 
-    void applyEditorTheme(key, value).then(nextTheme => {
+    void applyEditorTheme(key).then(nextTheme => {
       setTheme(nextTheme);
     });
   };
@@ -135,11 +135,7 @@ const EditorThemeSettings = ({ monaco }: EditorThemeSettingsProps) => {
               <CommandEmpty>No theme found.</CommandEmpty>
               <CommandGroup>
                 {themes.map(([key, themeData]) => (
-                  <CommandItem
-                    key={key}
-                    value={key}
-                    onSelect={() => handleThemeChange(key, themeData.name)}
-                  >
+                  <CommandItem key={key} value={key} onSelect={() => handleThemeChange(key)}>
                     <Check
                       className={cn(
                         'mr-2 size-4',
