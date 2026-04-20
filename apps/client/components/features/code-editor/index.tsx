@@ -36,6 +36,10 @@ interface CodeEditorProps {
   setCode: (code: string) => void;
 }
 
+const getMonacoThemeId = (themeKey: string): string => {
+  return themeKey === 'light' ? 'vs' : themeKey;
+};
+
 const CodeEditor = memo(function CodeEditor({
   monacoRef,
   editorRef,
@@ -70,7 +74,7 @@ const CodeEditor = memo(function CodeEditor({
 
   // Apply theme changes
   useEffect(() => {
-    editorInstanceRef.current?.updateOptions({ theme });
+    monacoInstanceRef.current?.editor.setTheme(getMonacoThemeId(theme));
   }, [theme]);
 
   // Setup socket event listeners after Monaco is ready
@@ -145,7 +149,7 @@ const CodeEditor = memo(function CodeEditor({
   return (
     <Editor
       defaultLanguage="html"
-      theme={theme}
+      theme={getMonacoThemeId(theme)}
       loading={<LoadingCard />}
       beforeMount={editorService.handleBeforeMount}
       onMount={handleEditorMount}

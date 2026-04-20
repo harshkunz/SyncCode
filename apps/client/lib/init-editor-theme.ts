@@ -17,6 +17,10 @@ import {
   type MonacoThemeDefinition
 } from '@/lib/monaco-themes';
 
+const getMonacoThemeId = (themeKey: string): string => {
+  return themeKey === 'light' ? 'vs' : themeKey;
+};
+
 const setCSSVariables = (variables: Record<string, string>) => {
   if (typeof document === 'undefined') return; // Check for SSR
 
@@ -46,16 +50,35 @@ const applyDefaultTheme = (themeKey: keyof typeof DEFAULT_THEMES) => {
   applyThemeClass(themeKey === 'vs-dark' ? 'vs-dark' : 'vs');
 };
 
+const getThemeColor = (themeData: MonacoThemeDefinition, key: string, fallback: string): string => {
+  const value = themeData.colors[key];
+  return typeof value === 'string' && value.length > 0 ? value.slice(0, 7) : fallback;
+};
+
 const applyCustomTheme = (themeData: MonacoThemeDefinition) => {
   applyThemeClass(themeData.base);
 
+  const isDark = getMonacoThemeMode(themeData) === 'dark';
+  const toolbarBg = getThemeColor(
+    themeData,
+    'editor.selectionBackground',
+    isDark ? '#264f78' : '#add6ff'
+  );
+  const foreground = getThemeColor(themeData, 'editor.foreground', isDark ? '#d4d4d4' : '#000000');
+  const cursor = getThemeColor(
+    themeData,
+    'editorCursor.foreground',
+    isDark ? '#aeafad' : '#000000'
+  );
+  const background = getThemeColor(themeData, 'editor.background', isDark ? '#1e1e1e' : '#ffffff');
+
   setCSSVariables({
-    '--toolbar-bg-primary': themeData.colors['editor.selectionBackground'].slice(0, 7),
-    '--toolbar-bg-secondary': themeData.colors['editor.selectionBackground'].slice(0, 7),
-    '--toolbar-foreground': themeData.colors['editor.foreground'].slice(0, 7),
-    '--toolbar-accent': themeData.colors['editorCursor.foreground'].slice(0, 7),
-    '--panel-text-accent': themeData.colors['editor.background'].slice(0, 7),
-    '--panel-background': themeData.colors['editor.background'].slice(0, 7),
+    '--toolbar-bg-primary': toolbarBg,
+    '--toolbar-bg-secondary': toolbarBg,
+    '--toolbar-foreground': foreground,
+    '--toolbar-accent': cursor,
+    '--panel-text-accent': background,
+    '--panel-background': background,
     '--status-bar-text': getMonacoThemeMode(themeData)
   });
 };
@@ -68,7 +91,7 @@ export const registerMonaco = (monaco: Monaco) => {
   const savedTheme =
     typeof localStorage !== 'undefined' ? localStorage.getItem('editorTheme') : null;
   if (savedTheme && savedTheme in DEFAULT_THEMES) {
-    globalMonaco.editor.setTheme(savedTheme);
+    globalMonaco.editor.setTheme(getMonacoThemeId(savedTheme));
     return;
   }
 
@@ -90,7 +113,7 @@ export const registerMonaco = (monaco: Monaco) => {
     window.matchMedia &&
     window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-  globalMonaco.editor.setTheme(systemPrefersDark ? 'vs-dark' : 'light');
+  globalMonaco.editor.setTheme(systemPrefersDark ? 'vs-dark' : 'vs');
 };
 
 // Function to check system preference for dark mode
@@ -142,7 +165,7 @@ export const initEditorTheme = async () => {
     const theme =
       localStorage.getItem('editorTheme') ||
       (getSystemPreference() === 'dark' ? 'vs-dark' : 'light');
-    globalMonaco.editor.setTheme(theme);
+    globalMonaco.editor.setTheme(getMonacoThemeId(theme));
   }
 };
 
@@ -155,17 +178,17 @@ if (typeof window !== 'undefined') {
 }
 
 // Export a utility function that components can use to apply a theme
-export const applyEditorTheme = async (key: string, value: string) => {
+export const applyEditorTheme = async (key: string) => {
   localStorage.setItem('editorTheme', key);
 
   if (key in DEFAULT_THEMES) {
     applyDefaultTheme(key as keyof typeof DEFAULT_THEMES);
-    globalMonaco?.editor.setTheme(key);
+    globalMonaco?.editor.setTheme(getMonacoThemeId(key));
     return key === 'vs-dark' ? 'dark' : 'light';
   }
 
   try {
-    const themeData = await loadMonacoThemeData(value);
+    const themeData = await loadMonacoThemeData(key);
 
     if (!themeData) {
       globalMonaco?.editor.setTheme('vs-dark');
