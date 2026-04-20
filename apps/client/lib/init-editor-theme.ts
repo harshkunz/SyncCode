@@ -50,16 +50,35 @@ const applyDefaultTheme = (themeKey: keyof typeof DEFAULT_THEMES) => {
   applyThemeClass(themeKey === 'vs-dark' ? 'vs-dark' : 'vs');
 };
 
+const getThemeColor = (themeData: MonacoThemeDefinition, key: string, fallback: string): string => {
+  const value = themeData.colors[key];
+  return typeof value === 'string' && value.length > 0 ? value.slice(0, 7) : fallback;
+};
+
 const applyCustomTheme = (themeData: MonacoThemeDefinition) => {
   applyThemeClass(themeData.base);
 
+  const isDark = getMonacoThemeMode(themeData) === 'dark';
+  const toolbarBg = getThemeColor(
+    themeData,
+    'editor.selectionBackground',
+    isDark ? '#264f78' : '#add6ff'
+  );
+  const foreground = getThemeColor(themeData, 'editor.foreground', isDark ? '#d4d4d4' : '#000000');
+  const cursor = getThemeColor(
+    themeData,
+    'editorCursor.foreground',
+    isDark ? '#aeafad' : '#000000'
+  );
+  const background = getThemeColor(themeData, 'editor.background', isDark ? '#1e1e1e' : '#ffffff');
+
   setCSSVariables({
-    '--toolbar-bg-primary': themeData.colors['editor.selectionBackground'].slice(0, 7),
-    '--toolbar-bg-secondary': themeData.colors['editor.selectionBackground'].slice(0, 7),
-    '--toolbar-foreground': themeData.colors['editor.foreground'].slice(0, 7),
-    '--toolbar-accent': themeData.colors['editorCursor.foreground'].slice(0, 7),
-    '--panel-text-accent': themeData.colors['editor.background'].slice(0, 7),
-    '--panel-background': themeData.colors['editor.background'].slice(0, 7),
+    '--toolbar-bg-primary': toolbarBg,
+    '--toolbar-bg-secondary': toolbarBg,
+    '--toolbar-foreground': foreground,
+    '--toolbar-accent': cursor,
+    '--panel-text-accent': background,
+    '--panel-background': background,
     '--status-bar-text': getMonacoThemeMode(themeData)
   });
 };

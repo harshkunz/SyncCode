@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server';
 
+import { existsSync } from 'fs';
 import { readFile } from 'fs/promises';
 import { createRequire } from 'module';
 import path from 'path';
@@ -10,7 +11,29 @@ const require = createRequire(import.meta.url);
 
 const getThemesDirectory = (): string => {
   const packageEntry = require.resolve('monaco-themes');
-  return path.resolve(path.dirname(packageEntry), '..', 'themes');
+  const normalizedPackageEntry = packageEntry
+    .replace(`${path.sep}[project]${path.sep}`, path.sep)
+    .replace('/[project]/', '/');
+
+  const fromResolvedEntry = path.resolve(path.dirname(normalizedPackageEntry), '..', 'themes');
+  const fromAppNodeModules = path.resolve(process.cwd(), 'node_modules', 'monaco-themes', 'themes');
+  const fromWorkspaceNodeModules = path.resolve(
+    process.cwd(),
+    '..',
+    '..',
+    'node_modules',
+    'monaco-themes',
+    'themes'
+  );
+
+  const candidates = [fromResolvedEntry, fromAppNodeModules, fromWorkspaceNodeModules];
+  const existing = candidates.find(candidate => existsSync(candidate));
+
+  if (!existing) {
+    throw new Error('Unable to locate monaco-themes directory');
+  }
+
+  return existing;
 };
 
 export async function GET(
