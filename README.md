@@ -404,6 +404,9 @@ If pnpm is not installed, run:
 Create apps/client/.env
 
 ```bash
+    NEXT_PUBLIC_CLIENT_URL=
+    NEXT_PUBLIC_SERVER_URL=
+    KASCA_SERVER_MONITOR_ID=
     BETTERSTACK_API_KEY=
     SENTRY_AUTH_TOKEN=
     GITHUB_CLIENT_SECRET_PROD=
@@ -415,6 +418,7 @@ Create apps/client/.env
 Create apps/server/.env
 
 ```bash
+    PORT=3001
     CLIENT_URL=
     SERVER_URL=
     GITHUB_CLIENT_ID_PROD=
