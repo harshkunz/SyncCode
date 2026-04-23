@@ -77,9 +77,9 @@ const applyCustomTheme = (themeData: MonacoThemeDefinition) => {
     '--toolbar-bg-secondary': toolbarBg,
     '--toolbar-foreground': foreground,
     '--toolbar-accent': cursor,
-    '--panel-text-accent': background,
+    '--panel-text-accent': foreground,
     '--panel-background': background,
-    '--status-bar-text': getMonacoThemeMode(themeData)
+    '--status-bar-text': foreground
   });
 };
 
