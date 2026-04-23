@@ -13,14 +13,20 @@ const ALLOWED_ORIGINS = [
 ].filter(Boolean) as string[];
 
 const isVercelDeployment = (origin: string): boolean => {
-  const VERCEL_PATTERN = /^https:\/\/synccode-client-[a-zA-Z0-9]+-[a-zA-Z0-9-]+\.vercel\.app$/;
-  return VERCEL_PATTERN.test(origin);
+  const VERCEL_PATTERNS = [
+    /^https:\/\/synccode(?:-[a-zA-Z0-9-]+)?\.vercel\.app$/,
+    /^https:\/\/synccode-client-[a-zA-Z0-9]+-[a-zA-Z0-9-]+\.vercel\.app$/
+  ];
+
+  return VERCEL_PATTERNS.some(pattern => pattern.test(origin));
 };
 
 const getAllowedOrigin = (origin: string | undefined): string => {
+  const fallbackOrigin = ALLOWED_ORIGINS[0] ?? 'http://localhost:3000';
+
   // For security, avoid returning '*' in production
   if (process.env.NODE_ENV === 'production' && !origin) {
-    return ALLOWED_ORIGINS[0];
+    return fallbackOrigin;
   }
 
   if (!origin) return '*';
@@ -32,7 +38,7 @@ const getAllowedOrigin = (origin: string | undefined): string => {
     return origin;
   }
 
-  return ALLOWED_ORIGINS[0];
+  return fallbackOrigin;
 };
 
 const getCorsHeaders = (origin: string | undefined) => ({

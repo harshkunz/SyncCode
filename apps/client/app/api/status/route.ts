@@ -14,25 +14,34 @@ import type { BetterStackResponse } from '@/components/features/server-status/li
 
 // export const runtime = 'edge';
 
+const getFallbackStatusResponse = (reason: string) =>
+  NextResponse.json({ data: null, degraded: true, reason }, { status: 200 });
+
 export async function GET() {
+  const apiKey = process.env.BETTERSTACK_API_KEY;
+
+  if (!KASCA_SERVER_MONITOR_ID || !apiKey) {
+    return getFallbackStatusResponse('BetterStack monitoring is not configured');
+  }
+
   try {
     const response = await fetch(
       `https://uptime.betterstack.com/api/v2/monitors/${KASCA_SERVER_MONITOR_ID}`,
       {
         headers: {
-          Authorization: `Bearer ${process.env.BETTERSTACK_API_KEY}`
+          Authorization: `Bearer ${apiKey}`
         }
       }
     );
 
     if (!response.ok) {
-      throw new Error('Failed to fetch status');
+      return getFallbackStatusResponse('BetterStack API request failed');
     }
 
     const data = (await response.json()) as BetterStackResponse;
     return NextResponse.json(data);
   } catch (error) {
     console.error('Error fetching server status:', error);
-    return NextResponse.json({ error: 'Failed to fetch server status' }, { status: 500 });
+    return getFallbackStatusResponse('Unexpected status fetch error');
   }
 }
